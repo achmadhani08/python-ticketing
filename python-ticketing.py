@@ -32,7 +32,7 @@ ticket_pricelist = {
     "Jakarta - Yogyakarta": {
         "train": {
             "Economy": {"weekday": 500000, "weekend": 520000},
-            "Business": {"weekday": 60, "weekend": 70},
+           
             "First": {"weekday": 100, "weekend": 120},
         },
         "plane": {
