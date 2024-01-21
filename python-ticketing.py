@@ -3,7 +3,10 @@ from prettytable import PrettyTable
 
 locale.setlocale(locale.LC_ALL, "id_ID")
 
-# List ticket
+# List kota
+list_kota = ["Jakarta", "Malang", "Bandung", "Yogyakarta", "Surabaya"]
+
+# List ticket Jakarta
 jkt_ticket_pricelist = {
     "Jakarta - Malang": {
         "train": {
@@ -47,6 +50,7 @@ jkt_ticket_pricelist = {
     },
 }
 
+# List ticket Malang
 mlg_ticket_pricelist = {
     "Malang - Jakarta": {
         "train": {
@@ -90,6 +94,7 @@ mlg_ticket_pricelist = {
     },
 }
 
+# List ticket Bandung
 bdg_ticket_pricelist = {
     "Bandung - Jakarta": {
         "train": {
@@ -133,6 +138,7 @@ bdg_ticket_pricelist = {
     },
 }
 
+# List ticket Yogyakarta
 ygy_ticket_pricelist = {
     "Yogyakarta - Malang": {
         "train": {
@@ -176,6 +182,7 @@ ygy_ticket_pricelist = {
     },
 }
 
+# List ticket Surabaya
 sby_ticket_pricelist = {
     "Surabaya - Malang": {
         "train": {
@@ -218,7 +225,12 @@ sby_ticket_pricelist = {
         },
     },
 }
-# Variables
+
+
+# Header Table City
+header_table_city = ["No", "Daftar Kota Keberangkatan/Tujuan"]
+
+# Header Table Route
 header_table = [
     "Route",
     "Class",
@@ -229,28 +241,44 @@ header_table = [
 ]
 
 routes = []  # List of routes
-classes = ["Economy", "Business", "First"]  # List of class type
+classes = ["Economy", "First"]  # List of class type
 transport = ["train", "plane"]  # List of transportation
 days = ["weekday", "weekend"]  # Ticket
 
-for route in ticket_pricelist.keys():
+for route in jkt_ticket_pricelist.keys():
     routes.append(route)
 
 # Create a PrettyTable instance
+table_list_city = PrettyTable()
+
 pricelist_route1 = PrettyTable()
 pricelist_route2 = PrettyTable()
 pricelist_route3 = PrettyTable()
 pricelist_route4 = PrettyTable()
 
 # Set the header table
+table_list_city.field_names = header_table_city  # Header for City Table
+
 pricelist_route1.field_names = (
     pricelist_route2.field_names
 ) = pricelist_route3.field_names = pricelist_route4.field_names = header_table
 
 # Set the alignment of columns
+table_list_city.align = "l"
 pricelist_route1.align = (
     pricelist_route2.align
 ) = pricelist_route3.align = pricelist_route4.align = "c"
+
+# Adding row table city list
+table_list_city.add_rows(
+    [
+        ["1", "Jakarta"],
+        ["2", "Malang"],
+        ["3", "Bandung"],
+        ["4", "Yogyakarta"],
+        ["5", "Surabaya"],
+    ]
+)
 
 # Adding row table route 1: Jakarta - Malang
 pricelist_route1.add_rows(
@@ -260,22 +288,22 @@ pricelist_route1.add_rows(
             classes[0],
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[0]][transport[0]][classes[0]][days[0]],
+                jkt_ticket_pricelist[routes[0]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[0]][transport[0]][classes[0]][days[1]],
+                jkt_ticket_pricelist[routes[0]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[0]][transport[1]][classes[0]][days[0]],
+                jkt_ticket_pricelist[routes[0]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[0]][transport[1]][classes[0]][days[1]],
+                jkt_ticket_pricelist[routes[0]][transport[1]][classes[0]][days[1]],
                 grouping=True,
             ),
         ],
@@ -284,46 +312,22 @@ pricelist_route1.add_rows(
             classes[1],
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[0]][transport[0]][classes[1]][days[0]],
+                jkt_ticket_pricelist[routes[0]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[0]][transport[0]][classes[1]][days[1]],
+                jkt_ticket_pricelist[routes[0]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[0]][transport[1]][classes[1]][days[0]],
+                jkt_ticket_pricelist[routes[0]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[0]][transport[1]][classes[1]][days[1]],
-                grouping=True,
-            ),
-        ],
-        [
-            routes[0],
-            classes[2],
-            locale.format_string(
-                "%d",
-                ticket_pricelist[routes[0]][transport[0]][classes[2]][days[0]],
-                grouping=True,
-            ),
-            locale.format_string(
-                "%d",
-                ticket_pricelist[routes[0]][transport[0]][classes[2]][days[1]],
-                grouping=True,
-            ),
-            locale.format_string(
-                "%d",
-                ticket_pricelist[routes[0]][transport[1]][classes[2]][days[0]],
-                grouping=True,
-            ),
-            locale.format_string(
-                "%d",
-                ticket_pricelist[routes[0]][transport[1]][classes[2]][days[1]],
+                jkt_ticket_pricelist[routes[0]][transport[1]][classes[1]][days[1]],
                 grouping=True,
             ),
         ],
@@ -338,22 +342,22 @@ pricelist_route2.add_rows(
             classes[0],
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[1]][transport[0]][classes[0]][days[0]],
+                jkt_ticket_pricelist[routes[1]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[1]][transport[0]][classes[0]][days[1]],
+                jkt_ticket_pricelist[routes[1]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[1]][transport[1]][classes[0]][days[0]],
+                jkt_ticket_pricelist[routes[1]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[1]][transport[1]][classes[0]][days[1]],
+                jkt_ticket_pricelist[routes[1]][transport[1]][classes[0]][days[1]],
                 grouping=True,
             ),
         ],
@@ -362,46 +366,22 @@ pricelist_route2.add_rows(
             classes[1],
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[1]][transport[0]][classes[1]][days[0]],
+                jkt_ticket_pricelist[routes[1]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[1]][transport[0]][classes[1]][days[1]],
+                jkt_ticket_pricelist[routes[1]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[1]][transport[1]][classes[1]][days[0]],
+                jkt_ticket_pricelist[routes[1]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[1]][transport[1]][classes[1]][days[1]],
-                grouping=True,
-            ),
-        ],
-        [
-            routes[1],
-            classes[2],
-            locale.format_string(
-                "%d",
-                ticket_pricelist[routes[1]][transport[0]][classes[2]][days[0]],
-                grouping=True,
-            ),
-            locale.format_string(
-                "%d",
-                ticket_pricelist[routes[1]][transport[0]][classes[2]][days[1]],
-                grouping=True,
-            ),
-            locale.format_string(
-                "%d",
-                ticket_pricelist[routes[1]][transport[1]][classes[2]][days[0]],
-                grouping=True,
-            ),
-            locale.format_string(
-                "%d",
-                ticket_pricelist[routes[1]][transport[1]][classes[2]][days[1]],
+                jkt_ticket_pricelist[routes[1]][transport[1]][classes[1]][days[1]],
                 grouping=True,
             ),
         ],
@@ -416,22 +396,22 @@ pricelist_route3.add_rows(
             classes[0],
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[2]][transport[0]][classes[0]][days[0]],
+                jkt_ticket_pricelist[routes[2]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[2]][transport[0]][classes[0]][days[1]],
+                jkt_ticket_pricelist[routes[2]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[2]][transport[1]][classes[0]][days[0]],
+                jkt_ticket_pricelist[routes[2]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[2]][transport[1]][classes[0]][days[1]],
+                jkt_ticket_pricelist[routes[2]][transport[1]][classes[0]][days[1]],
                 grouping=True,
             ),
         ],
@@ -440,46 +420,22 @@ pricelist_route3.add_rows(
             classes[1],
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[2]][transport[0]][classes[1]][days[0]],
+                jkt_ticket_pricelist[routes[2]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[2]][transport[0]][classes[1]][days[1]],
+                jkt_ticket_pricelist[routes[2]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[2]][transport[1]][classes[1]][days[0]],
+                jkt_ticket_pricelist[routes[2]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[2]][transport[1]][classes[1]][days[1]],
-                grouping=True,
-            ),
-        ],
-        [
-            routes[2],
-            classes[2],
-            locale.format_string(
-                "%d",
-                ticket_pricelist[routes[2]][transport[0]][classes[2]][days[0]],
-                grouping=True,
-            ),
-            locale.format_string(
-                "%d",
-                ticket_pricelist[routes[2]][transport[0]][classes[2]][days[1]],
-                grouping=True,
-            ),
-            locale.format_string(
-                "%d",
-                ticket_pricelist[routes[2]][transport[1]][classes[2]][days[0]],
-                grouping=True,
-            ),
-            locale.format_string(
-                "%d",
-                ticket_pricelist[routes[2]][transport[1]][classes[2]][days[1]],
+                jkt_ticket_pricelist[routes[2]][transport[1]][classes[1]][days[1]],
                 grouping=True,
             ),
         ],
@@ -494,22 +450,22 @@ pricelist_route4.add_rows(
             classes[0],
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[3]][transport[0]][classes[0]][days[0]],
+                jkt_ticket_pricelist[routes[3]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[3]][transport[0]][classes[0]][days[1]],
+                jkt_ticket_pricelist[routes[3]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[3]][transport[1]][classes[0]][days[0]],
+                jkt_ticket_pricelist[routes[3]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[3]][transport[1]][classes[0]][days[1]],
+                jkt_ticket_pricelist[routes[3]][transport[1]][classes[0]][days[1]],
                 grouping=True,
             ),
         ],
@@ -518,46 +474,22 @@ pricelist_route4.add_rows(
             classes[1],
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[3]][transport[0]][classes[1]][days[0]],
+                jkt_ticket_pricelist[routes[3]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[3]][transport[0]][classes[1]][days[1]],
+                jkt_ticket_pricelist[routes[3]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[3]][transport[1]][classes[1]][days[0]],
+                jkt_ticket_pricelist[routes[3]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                ticket_pricelist[routes[3]][transport[1]][classes[1]][days[1]],
-                grouping=True,
-            ),
-        ],
-        [
-            routes[3],
-            classes[2],
-            locale.format_string(
-                "%d",
-                ticket_pricelist[routes[3]][transport[0]][classes[2]][days[0]],
-                grouping=True,
-            ),
-            locale.format_string(
-                "%d",
-                ticket_pricelist[routes[3]][transport[0]][classes[2]][days[1]],
-                grouping=True,
-            ),
-            locale.format_string(
-                "%d",
-                ticket_pricelist[routes[3]][transport[1]][classes[2]][days[0]],
-                grouping=True,
-            ),
-            locale.format_string(
-                "%d",
-                ticket_pricelist[routes[3]][transport[1]][classes[2]][days[1]],
+                jkt_ticket_pricelist[routes[3]][transport[1]][classes[1]][days[1]],
                 grouping=True,
             ),
         ],
@@ -577,5 +509,16 @@ def showPriceList(route):
         print(pricelist_route4)
 
 
+# Show List City
+print(table_list_city)
+
+# Input Departure Route
+departure_route = str(input("Masukkan kota keberangkatan "))
+print("Anda dari:", departure_route)
+
+# Inpute Destination Route
+destination_route = str(input("Masukkan kota tujuan "))
+print("Anda menuju:", destination_route)
+
 # Show table
-showPriceList("4")
+# showPriceList("4")
