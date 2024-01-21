@@ -4,57 +4,220 @@ from prettytable import PrettyTable
 locale.setlocale(locale.LC_ALL, "id_ID")
 
 # List ticket
-ticket_pricelist = {
+jkt_ticket_pricelist = {
     "Jakarta - Malang": {
         "train": {
-            "Economy": {"weekday": 600000, "weekend": 635000},
-            "Business": {"weekday": 80, "weekend": 90},
+            "Economy": {"weekday": 210000, "weekend": 240000},
             "First": {"weekday": 120, "weekend": 150},
         },
         "plane": {
             "Economy": {"weekday": 1070000, "weekend": 1150000},
-            "Business": {"weekday": 150, "weekend": 180},
             "First": {"weekday": 200, "weekend": 250},
         },
     },
     "Jakarta - Bandung": {
         "train": {
-            "Economy": {"weekday": 150000, "weekend": 180000},
-            "Business": {"weekday": 60, "weekend": 70},
+            "Economy": {"weekday": 63000, "weekend": 110000},
             "First": {"weekday": 100, "weekend": 120},
         },
         "plane": {
             "Economy": {"weekday": 560000, "weekend": 570000},
-            "Business": {"weekday": 120, "weekend": 150},
             "First": {"weekday": 180, "weekend": 220},
         },
     },
     "Jakarta - Yogyakarta": {
         "train": {
-            "Economy": {"weekday": 500000, "weekend": 520000},
-           
+            "Economy": {"weekday": 200000, "weekend": 220000},
             "First": {"weekday": 100, "weekend": 120},
         },
         "plane": {
             "Economy": {"weekday": 870000, "weekend": 975000},
-            "Business": {"weekday": 120, "weekend": 150},
             "First": {"weekday": 180, "weekend": 220},
         },
     },
     "Jakarta - Surabaya": {
         "train": {
-            "Economy": {"weekday": 540000, "weekend": 570000},
-            "Business": {"weekday": 60, "weekend": 70},
+            "Economy": {"weekday": 220000, "weekend": 240000},
             "First": {"weekday": 100, "weekend": 120},
         },
         "plane": {
             "Economy": {"weekday": 950000, "weekend": 1120000},
-            "Business": {"weekday": 120, "weekend": 150},
             "First": {"weekday": 180, "weekend": 220},
         },
     },
 }
 
+mlg_ticket_pricelist = {
+    "Malang - Jakarta": {
+        "train": {
+            "Economy": {"weekday": 170000, "weekend": 200000},
+            "First": {"weekday": 120, "weekend": 150},
+        },
+        "plane": {
+            "Economy": {"weekday": 890000, "weekend": 930000},
+            "First": {"weekday": 200, "weekend": 250},
+        },
+    },
+    "Malang - Bandung": {
+        "train": {
+            "Economy": {"weekday": 150000, "weekend": 170000},
+            "First": {"weekday": 100, "weekend": 120},
+        },
+        "plane": {
+            "Economy": {"weekday": 800000, "weekend": 840000},
+            "First": {"weekday": 180, "weekend": 220},
+        },
+    },
+    "Malang - Yogyakarta": {
+        "train": {
+            "Economy": {"weekday": 100000, "weekend": 130000},
+            "First": {"weekday": 100, "weekend": 120},
+        },
+        "plane": {
+            "Economy": {"weekday": 710000, "weekend": 760000},
+            "First": {"weekday": 180, "weekend": 220},
+        },
+    },
+    "Malang - Surabaya": {
+        "train": {
+            "Economy": {"weekday": 75000, "weekend": 90000},
+            "First": {"weekday": 100, "weekend": 120},
+        },
+        "plane": {
+            "Economy": {"weekday": 630000, "weekend": 660000},
+            "First": {"weekday": 180, "weekend": 220},
+        },
+    },
+}
+
+bdg_ticket_pricelist = {
+    "Bandung - Jakarta": {
+        "train": {
+            "Economy": {"weekday": 150000, "weekend": 170000},
+            "First": {"weekday": 120, "weekend": 150},
+        },
+        "plane": {
+            "Economy": {"weekday": 1280000, "weekend": 1450000},
+            "First": {"weekday": 200, "weekend": 250},
+        },
+    },
+    "Bandung - Malang": {
+        "train": {
+            "Economy": {"weekday": 300000, "weekend": 320000},
+            "First": {"weekday": 100, "weekend": 120},
+        },
+        "plane": {
+            "Economy": {"weekday": 1680000, "weekend": 1700000},
+            "First": {"weekday": 180, "weekend": 220},
+        },
+    },
+    "Bandung - Yogyakarta": {
+        "train": {
+            "Economy": {"weekday": 220000, "weekend": 240000},
+            "First": {"weekday": 100, "weekend": 120},
+        },
+        "plane": {
+            "Economy": {"weekday": 1100000, "weekend": 1210000},
+            "First": {"weekday": 180, "weekend": 220},
+        },
+    },
+    "Bandung - Surabaya": {
+        "train": {
+            "Economy": {"weekday": 350000, "weekend": 370000},
+            "First": {"weekday": 100, "weekend": 120},
+        },
+        "plane": {
+            "Economy": {"weekday": 1250000, "weekend": 1400000},
+            "First": {"weekday": 180, "weekend": 220},
+        },
+    },
+}
+
+ygy_ticket_pricelist = {
+    "Yogyakarta - Malang": {
+        "train": {
+            "Economy": {"weekday": 145000, "weekend": 160000},
+            "First": {"weekday": 120, "weekend": 150},
+        },
+        "plane": {
+            "Economy": {"weekday": 850000, "weekend": 900000},
+            "First": {"weekday": 200, "weekend": 250},
+        },
+    },
+    "Yogyakarta - Bandung": {
+        "train": {
+            "Economy": {"weekday": 190000, "weekend": 200000},
+            "First": {"weekday": 100, "weekend": 120},
+        },
+        "plane": {
+            "Economy": {"weekday": 1150000, "weekend": 1700000},
+            "First": {"weekday": 180, "weekend": 220},
+        },
+    },
+    "Yogyakarta - Jakarta": {
+        "train": {
+            "Economy": {"weekday": 200000, "weekend": 220000},
+            "First": {"weekday": 100, "weekend": 120},
+        },
+        "plane": {
+            "Economy": {"weekday": 1170000, "weekend": 1200000},
+            "First": {"weekday": 180, "weekend": 220},
+        },
+    },
+    "Yogyakarta - Surabaya": {
+        "train": {
+            "Economy": {"weekday": 155000, "weekend": 170000},
+            "First": {"weekday": 100, "weekend": 120},
+        },
+        "plane": {
+            "Economy": {"weekday": 920000, "weekend": 950000},
+            "First": {"weekday": 180, "weekend": 220},
+        },
+    },
+}
+
+sby_ticket_pricelist = {
+    "Surabaya - Malang": {
+        "train": {
+            "Economy": {"weekday": 75000, "weekend": 100000},
+            "First": {"weekday": 120, "weekend": 150},
+        },
+        "plane": {
+            "Economy": {"weekday": 650000, "weekend": 700000},
+            "First": {"weekday": 200, "weekend": 250},
+        },
+    },
+    "Surabaya - Bandung": {
+        "train": {
+            "Economy": {"weekday": 160000, "weekend": 180000},
+            "First": {"weekday": 100, "weekend": 120},
+        },
+        "plane": {
+            "Economy": {"weekday": 1000000, "weekend": 1160000},
+            "First": {"weekday": 180, "weekend": 220},
+        },
+    },
+    "Surabaya - Yogyakarta": {
+        "train": {
+            "Economy": {"weekday": 105000, "weekend": 120000},
+            "First": {"weekday": 100, "weekend": 120},
+        },
+        "plane": {
+            "Economy": {"weekday": 900000, "weekend": 975000},
+            "First": {"weekday": 180, "weekend": 220},
+        },
+    },
+    "Surabaya - Jakarta": {
+        "train": {
+            "Economy": {"weekday": 170000, "weekend": 190000},
+            "First": {"weekday": 100, "weekend": 120},
+        },
+        "plane": {
+            "Economy": {"weekday": 1060000, "weekend": 1120000},
+            "First": {"weekday": 180, "weekend": 220},
+        },
+    },
+}
 # Variables
 header_table = [
     "Route",
