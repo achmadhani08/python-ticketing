@@ -674,7 +674,7 @@ pricelist_jkt4.add_rows(
 pricelist_mlg1.add_rows(
     [
         [
-            mlg_routes[1],
+            mlg_routes[0],
             classes[0],
             locale.format_string(
                 "%d",
@@ -782,7 +782,7 @@ pricelist_mlg2.add_rows(
 pricelist_mlg3.add_rows(
     [
         [
-            mlg_routes[1],
+            mlg_routes[2],
             classes[0],
             locale.format_string(
                 "%d",
@@ -836,7 +836,7 @@ pricelist_mlg3.add_rows(
 pricelist_mlg4.add_rows(
     [
         [
-            mlg_routes[1],
+            mlg_routes[3],
             classes[0],
             locale.format_string(
                 "%d",
@@ -892,7 +892,7 @@ pricelist_mlg4.add_rows(
 pricelist_bdg1.add_rows(
     [
         [
-            bdg_routes[2],
+            bdg_routes[0],
             classes[0],
             locale.format_string(
                 "%d",
@@ -946,7 +946,7 @@ pricelist_bdg1.add_rows(
 pricelist_bdg2.add_rows(
     [
         [
-            bdg_routes[2],
+            bdg_routes[1],
             classes[0],
             locale.format_string(
                 "%d",
@@ -1054,7 +1054,7 @@ pricelist_bdg3.add_rows(
 pricelist_bdg4.add_rows(
     [
         [
-            bdg_routes[2],
+            bdg_routes[3],
             classes[0],
             locale.format_string(
                 "%d",
@@ -1110,7 +1110,7 @@ pricelist_bdg4.add_rows(
 pricelist_ygy1.add_rows(
     [
         [
-            ygy_routes[3],
+            ygy_routes[0],
             classes[0],
             locale.format_string(
                 "%d",
@@ -1164,7 +1164,7 @@ pricelist_ygy1.add_rows(
 pricelist_ygy2.add_rows(
     [
         [
-            ygy_routes[3],
+            ygy_routes[1],
             classes[0],
             locale.format_string(
                 "%d",
@@ -1218,7 +1218,7 @@ pricelist_ygy2.add_rows(
 pricelist_ygy3.add_rows(
     [
         [
-            ygy_routes[3],
+            ygy_routes[2],
             classes[0],
             locale.format_string(
                 "%d",
@@ -1328,7 +1328,7 @@ pricelist_ygy4.add_rows(
 pricelist_sby1.add_rows(
     [
         [
-            sby_routes[4],
+            sby_routes[0],
             classes[0],
             locale.format_string(
                 "%d",
@@ -1382,7 +1382,7 @@ pricelist_sby1.add_rows(
 pricelist_sby2.add_rows(
     [
         [
-            sby_routes[4],
+            sby_routes[1],
             classes[0],
             locale.format_string(
                 "%d",
@@ -1436,7 +1436,7 @@ pricelist_sby2.add_rows(
 pricelist_sby3.add_rows(
     [
         [
-            sby_routes[4],
+            sby_routes[2],
             classes[0],
             locale.format_string(
                 "%d",
@@ -1490,7 +1490,7 @@ pricelist_sby3.add_rows(
 pricelist_sby4.add_rows(
     [
         [
-            sby_routes[4],
+            sby_routes[3],
             classes[0],
             locale.format_string(
                 "%d",
