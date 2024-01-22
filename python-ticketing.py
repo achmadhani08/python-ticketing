@@ -2620,10 +2620,8 @@ def selectingPrice():
             if selectClassType == 1:
                 if isWeekend == False:
                     printReceipt(
-                        sby_ticket_pricelist[sby_routes[2]][transport[0]][classes[0]][
-                            days[0]
-                        ],
-                        hotel_pricelist[city_list[2][days[0]],
+                        sby_ticket_pricelist[sby_routes[2]][transport[0]][classes[0]][days[0]],
+                        hotel_pricelist[city_list[2][days[0]]],
                     )
                 elif isWeekend == True:
                     printReceipt(
