@@ -186,6 +186,16 @@ ygy_ticket_pricelist = {
 
 # Pricelist Ticket Surabaya
 sby_ticket_pricelist = {
+    "Surabaya - Jakarta": {
+        "train": {
+            "Economy": {"weekday": 170000, "weekend": 190000},
+            "First": {"weekday": 240000, "weekend": 260000},
+        },
+        "plane": {
+            "Economy": {"weekday": 1060000, "weekend": 1120000},
+            "First": {"weekday": 1350000, "weekend": 1400000},
+        },
+    },
     "Surabaya - Malang": {
         "train": {
             "Economy": {"weekday": 75000, "weekend": 100000},
@@ -214,16 +224,6 @@ sby_ticket_pricelist = {
         "plane": {
             "Economy": {"weekday": 900000, "weekend": 975000},
             "First": {"weekday": 1200000, "weekend": 1220000},
-        },
-    },
-    "Surabaya - Jakarta": {
-        "train": {
-            "Economy": {"weekday": 170000, "weekend": 190000},
-            "First": {"weekday": 240000, "weekend": 260000},
-        },
-        "plane": {
-            "Economy": {"weekday": 1060000, "weekend": 1120000},
-            "First": {"weekday": 1350000, "weekend": 1400000},
         },
     },
 }
@@ -377,12 +377,14 @@ table_list_city.add_rows(
 table_list_hotel_jkt.add_row(
     [
         city_list[0],
-        locale.format_string(
+        "Rp"
+        + locale.format_string(
             "%d",
             hotel_pricelist[city_list[0]][days[0]],
             grouping=True,
         ),
-        locale.format_string(
+        "Rp"
+        + locale.format_string(
             "%d",
             hotel_pricelist[city_list[0]][days[1]],
             grouping=True,
@@ -392,12 +394,14 @@ table_list_hotel_jkt.add_row(
 table_list_hotel_mlg.add_row(
     [
         city_list[1],
-        locale.format_string(
+        "Rp"
+        + locale.format_string(
             "%d",
             hotel_pricelist[city_list[1]][days[0]],
             grouping=True,
         ),
-        locale.format_string(
+        "Rp"
+        + locale.format_string(
             "%d",
             hotel_pricelist[city_list[1]][days[1]],
             grouping=True,
@@ -407,12 +411,14 @@ table_list_hotel_mlg.add_row(
 table_list_hotel_bdg.add_row(
     [
         city_list[2],
-        locale.format_string(
+        "Rp"
+        + locale.format_string(
             "%d",
             hotel_pricelist[city_list[2]][days[0]],
             grouping=True,
         ),
-        locale.format_string(
+        "Rp"
+        + locale.format_string(
             "%d",
             hotel_pricelist[city_list[2]][days[1]],
             grouping=True,
@@ -422,12 +428,14 @@ table_list_hotel_bdg.add_row(
 table_list_hotel_ygy.add_row(
     [
         city_list[3],
-        locale.format_string(
+        "Rp"
+        + locale.format_string(
             "%d",
             hotel_pricelist[city_list[3]][days[0]],
             grouping=True,
         ),
-        locale.format_string(
+        "Rp"
+        + locale.format_string(
             "%d",
             hotel_pricelist[city_list[3]][days[1]],
             grouping=True,
@@ -437,12 +445,14 @@ table_list_hotel_ygy.add_row(
 table_list_hotel_sby.add_row(
     [
         city_list[4],
-        locale.format_string(
+        "Rp"
+        + locale.format_string(
             "%d",
             hotel_pricelist[city_list[4]][days[0]],
             grouping=True,
         ),
-        locale.format_string(
+        "Rp"
+        + locale.format_string(
             "%d",
             hotel_pricelist[city_list[4]][days[1]],
             grouping=True,
@@ -458,22 +468,26 @@ pricelist_jkt1.add_rows(
         [
             jkt_routes[0],
             classes[0],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[0]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[0]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[0]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[0]][transport[1]][classes[0]][days[1]],
                 grouping=True,
@@ -482,22 +496,26 @@ pricelist_jkt1.add_rows(
         [
             jkt_routes[0],
             classes[1],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[0]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[0]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[0]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[0]][transport[1]][classes[1]][days[1]],
                 grouping=True,
@@ -512,22 +530,26 @@ pricelist_jkt2.add_rows(
         [
             jkt_routes[1],
             classes[0],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[1]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[1]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[1]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[1]][transport[1]][classes[0]][days[1]],
                 grouping=True,
@@ -536,22 +558,26 @@ pricelist_jkt2.add_rows(
         [
             jkt_routes[1],
             classes[1],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[1]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[1]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[1]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[1]][transport[1]][classes[1]][days[1]],
                 grouping=True,
@@ -566,22 +592,26 @@ pricelist_jkt3.add_rows(
         [
             jkt_routes[2],
             classes[0],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[2]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[2]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[2]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[2]][transport[1]][classes[0]][days[1]],
                 grouping=True,
@@ -590,22 +620,26 @@ pricelist_jkt3.add_rows(
         [
             jkt_routes[2],
             classes[1],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[2]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[2]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[2]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[2]][transport[1]][classes[1]][days[1]],
                 grouping=True,
@@ -620,22 +654,26 @@ pricelist_jkt4.add_rows(
         [
             jkt_routes[3],
             classes[0],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[3]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[3]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[3]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[3]][transport[1]][classes[0]][days[1]],
                 grouping=True,
@@ -644,22 +682,26 @@ pricelist_jkt4.add_rows(
         [
             jkt_routes[3],
             classes[1],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[3]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[3]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[3]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 jkt_ticket_pricelist[jkt_routes[3]][transport[1]][classes[1]][days[1]],
                 grouping=True,
@@ -676,22 +718,26 @@ pricelist_mlg1.add_rows(
         [
             mlg_routes[0],
             classes[0],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[0]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[0]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[0]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[0]][transport[1]][classes[0]][days[1]],
                 grouping=True,
@@ -700,22 +746,26 @@ pricelist_mlg1.add_rows(
         [
             mlg_routes[0],
             classes[1],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[0]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[0]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[0]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[0]][transport[1]][classes[1]][days[1]],
                 grouping=True,
@@ -730,22 +780,26 @@ pricelist_mlg2.add_rows(
         [
             mlg_routes[1],
             classes[0],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[1]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[1]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[1]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[1]][transport[1]][classes[0]][days[1]],
                 grouping=True,
@@ -754,22 +808,26 @@ pricelist_mlg2.add_rows(
         [
             mlg_routes[1],
             classes[1],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[1]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[1]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[1]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[1]][transport[1]][classes[1]][days[1]],
                 grouping=True,
@@ -784,22 +842,26 @@ pricelist_mlg3.add_rows(
         [
             mlg_routes[2],
             classes[0],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[2]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[2]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[2]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[2]][transport[1]][classes[0]][days[1]],
                 grouping=True,
@@ -808,22 +870,26 @@ pricelist_mlg3.add_rows(
         [
             mlg_routes[2],
             classes[1],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[2]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[2]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[2]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[2]][transport[1]][classes[1]][days[1]],
                 grouping=True,
@@ -838,22 +904,26 @@ pricelist_mlg4.add_rows(
         [
             mlg_routes[3],
             classes[0],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[3]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[3]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[3]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[3]][transport[1]][classes[0]][days[1]],
                 grouping=True,
@@ -862,22 +932,26 @@ pricelist_mlg4.add_rows(
         [
             mlg_routes[3],
             classes[1],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[3]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[3]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[3]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 mlg_ticket_pricelist[mlg_routes[3]][transport[1]][classes[1]][days[1]],
                 grouping=True,
@@ -894,22 +968,26 @@ pricelist_bdg1.add_rows(
         [
             bdg_routes[0],
             classes[0],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[0]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[0]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[0]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[0]][transport[1]][classes[0]][days[1]],
                 grouping=True,
@@ -918,22 +996,26 @@ pricelist_bdg1.add_rows(
         [
             bdg_routes[0],
             classes[1],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[0]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[0]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[0]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[0]][transport[1]][classes[1]][days[1]],
                 grouping=True,
@@ -948,22 +1030,26 @@ pricelist_bdg2.add_rows(
         [
             bdg_routes[1],
             classes[0],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[1]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[1]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[1]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[1]][transport[1]][classes[0]][days[1]],
                 grouping=True,
@@ -972,22 +1058,26 @@ pricelist_bdg2.add_rows(
         [
             bdg_routes[1],
             classes[1],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[1]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[1]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[1]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[1]][transport[1]][classes[1]][days[1]],
                 grouping=True,
@@ -1002,22 +1092,26 @@ pricelist_bdg3.add_rows(
         [
             bdg_routes[2],
             classes[0],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[2]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[2]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[2]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[2]][transport[1]][classes[0]][days[1]],
                 grouping=True,
@@ -1026,22 +1120,26 @@ pricelist_bdg3.add_rows(
         [
             bdg_routes[2],
             classes[1],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[2]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[2]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[2]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[2]][transport[1]][classes[1]][days[1]],
                 grouping=True,
@@ -1056,22 +1154,26 @@ pricelist_bdg4.add_rows(
         [
             bdg_routes[3],
             classes[0],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[3]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[3]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[3]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[3]][transport[1]][classes[0]][days[1]],
                 grouping=True,
@@ -1080,22 +1182,26 @@ pricelist_bdg4.add_rows(
         [
             bdg_routes[3],
             classes[1],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[3]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[3]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[3]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 bdg_ticket_pricelist[bdg_routes[3]][transport[1]][classes[1]][days[1]],
                 grouping=True,
@@ -1112,22 +1218,26 @@ pricelist_ygy1.add_rows(
         [
             ygy_routes[0],
             classes[0],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[0]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[0]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[0]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[0]][transport[1]][classes[0]][days[1]],
                 grouping=True,
@@ -1136,22 +1246,26 @@ pricelist_ygy1.add_rows(
         [
             ygy_routes[0],
             classes[1],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[0]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[0]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[0]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[0]][transport[1]][classes[1]][days[1]],
                 grouping=True,
@@ -1166,22 +1280,26 @@ pricelist_ygy2.add_rows(
         [
             ygy_routes[1],
             classes[0],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[1]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[1]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[1]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[1]][transport[1]][classes[0]][days[1]],
                 grouping=True,
@@ -1190,22 +1308,26 @@ pricelist_ygy2.add_rows(
         [
             ygy_routes[1],
             classes[1],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[1]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[1]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[1]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[1]][transport[1]][classes[1]][days[1]],
                 grouping=True,
@@ -1220,22 +1342,26 @@ pricelist_ygy3.add_rows(
         [
             ygy_routes[2],
             classes[0],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[2]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[2]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[2]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[2]][transport[1]][classes[0]][days[1]],
                 grouping=True,
@@ -1244,22 +1370,26 @@ pricelist_ygy3.add_rows(
         [
             ygy_routes[2],
             classes[1],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[2]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[2]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[2]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[2]][transport[1]][classes[1]][days[1]],
                 grouping=True,
@@ -1274,22 +1404,26 @@ pricelist_ygy4.add_rows(
         [
             ygy_routes[3],
             classes[0],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[3]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[3]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[3]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[3]][transport[1]][classes[0]][days[1]],
                 grouping=True,
@@ -1298,22 +1432,26 @@ pricelist_ygy4.add_rows(
         [
             ygy_routes[3],
             classes[1],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[3]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[3]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[3]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 ygy_ticket_pricelist[ygy_routes[3]][transport[1]][classes[1]][days[1]],
                 grouping=True,
@@ -1330,22 +1468,26 @@ pricelist_sby1.add_rows(
         [
             sby_routes[0],
             classes[0],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[0]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[0]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[0]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[0]][transport[1]][classes[0]][days[1]],
                 grouping=True,
@@ -1354,22 +1496,26 @@ pricelist_sby1.add_rows(
         [
             sby_routes[0],
             classes[1],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[0]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[0]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[0]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[0]][transport[1]][classes[1]][days[1]],
                 grouping=True,
@@ -1384,22 +1530,26 @@ pricelist_sby2.add_rows(
         [
             sby_routes[1],
             classes[0],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[1]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[1]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[1]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[1]][transport[1]][classes[0]][days[1]],
                 grouping=True,
@@ -1408,22 +1558,26 @@ pricelist_sby2.add_rows(
         [
             sby_routes[1],
             classes[1],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[1]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[1]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[1]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[1]][transport[1]][classes[1]][days[1]],
                 grouping=True,
@@ -1438,22 +1592,26 @@ pricelist_sby3.add_rows(
         [
             sby_routes[2],
             classes[0],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[2]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[2]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[2]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[2]][transport[1]][classes[0]][days[1]],
                 grouping=True,
@@ -1462,22 +1620,26 @@ pricelist_sby3.add_rows(
         [
             sby_routes[2],
             classes[1],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[2]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[2]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[2]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[2]][transport[1]][classes[1]][days[1]],
                 grouping=True,
@@ -1492,22 +1654,26 @@ pricelist_sby4.add_rows(
         [
             sby_routes[3],
             classes[0],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[3]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[3]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[3]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[3]][transport[1]][classes[0]][days[1]],
                 grouping=True,
@@ -1516,22 +1682,26 @@ pricelist_sby4.add_rows(
         [
             sby_routes[3],
             classes[1],
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[3]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[3]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[3]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 sby_ticket_pricelist[sby_routes[3]][transport[1]][classes[1]][days[1]],
                 grouping=True,
@@ -1661,6 +1831,7 @@ elif destination_route == 4:
 elif destination_route == 5:
     destination_city = "Surabaya"
 
+print("\n") # Adding space
 selectPriceList()  # Show pricelist of selected route
 
 dateOfDeparture = str(input("Masukkan tanggal keberangkatan (tanggal bulan tahun): "))
@@ -1677,6 +1848,7 @@ else:
     print("Anda akan memesan tiket jenis weekday")
     isWeekend = False
 
+print("\n") # Adding space
 selectTransportType = int(
     input("Tiket transportasi apa yang Anda pesan? (1. Kereta | 2. Pesawat): ")
 )
@@ -1721,7 +1893,8 @@ def printReceipt(transport_price, hotel_price):
     table_receipt.add_row(
         [
             "Harga tiket transportasi:",
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 transport_price * countTicket,
                 grouping=True,
@@ -1731,7 +1904,8 @@ def printReceipt(transport_price, hotel_price):
     table_receipt.add_row(
         [
             "Harga kamar hotel:",
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 hotel_price * roomHotel if bookHotel == 1 else 0,
                 grouping=True,
@@ -1742,7 +1916,8 @@ def printReceipt(transport_price, hotel_price):
     table_receipt.add_row(
         [
             "Total harga:",
-            locale.format_string(
+            "Rp"
+            + locale.format_string(
                 "%d",
                 priceTotal,
                 grouping=True,
@@ -3018,9 +3193,11 @@ def selectingPrice():
 
 
 if bookHotel == 1:
+    print("\n") # Adding space
     showHotelPrice()
     roomHotel = int(input("Berapa banyak kamar yang Anda pesan? "))
+    print("\n") # Adding space
     selectingPrice()
 else:
+    print("\n") # Adding space
     selectingPrice()
-    print("Bandung Routes", bdg_routes)
