@@ -142,6 +142,16 @@ bdg_ticket_pricelist = {
 
 # Pricelist Ticket Yogyakarta
 ygy_ticket_pricelist = {
+    "Yogyakarta - Jakarta": {
+        "train": {
+            "Economy": {"weekday": 200000, "weekend": 220000},
+            "First": {"weekday": 300000, "weekend": 320000},
+        },
+        "plane": {
+            "Economy": {"weekday": 1170000, "weekend": 1200000},
+            "First": {"weekday": 1300000, "weekend": 1320000},
+        },
+    },
     "Yogyakarta - Malang": {
         "train": {
             "Economy": {"weekday": 145000, "weekend": 160000},
@@ -160,16 +170,6 @@ ygy_ticket_pricelist = {
         "plane": {
             "Economy": {"weekday": 1150000, "weekend": 1400000},
             "First": {"weekday": 1500000, "weekend": 1520000},
-        },
-    },
-    "Yogyakarta - Jakarta": {
-        "train": {
-            "Economy": {"weekday": 200000, "weekend": 220000},
-            "First": {"weekday": 300000, "weekend": 320000},
-        },
-        "plane": {
-            "Economy": {"weekday": 1170000, "weekend": 1200000},
-            "First": {"weekday": 1300000, "weekend": 1320000},
         },
     },
     "Yogyakarta - Surabaya": {
@@ -1542,127 +1542,69 @@ pricelist_sby4.add_rows(
 #!! End of Surabaya Route
 
 
-# Print the table pricelist route
-def showPriceList(
-    route_number,
-    pricelist_route_1,
-    pricelist_route_2,
-    pricelist_route_3,
-    pricelist_route_4,
-):
-    if route_number == "1":
-        print(pricelist_route_1)
-    elif route_number == "2":
-        print(pricelist_route_2)
-    elif route_number == "3":
-        print(pricelist_route_3)
-    elif route_number == "4":
-        print(pricelist_route_4)
-
-
-# Select pricelist by input user
+# Select table pricelist by input user
 def selectPriceList():
     if departure_route == 1:
         if destination_route == 2:
-            showPriceList(
-                "1", pricelist_jkt1, pricelist_jkt2, pricelist_jkt3, pricelist_jkt4
-            )
+            print(pricelist_jkt1)
         elif destination_route == 3:
-            showPriceList(
-                "2", pricelist_jkt1, pricelist_jkt2, pricelist_jkt3, pricelist_jkt4
-            )
+            print(pricelist_jkt2)
         elif destination_route == 4:
-            showPriceList(
-                "3", pricelist_jkt1, pricelist_jkt2, pricelist_jkt3, pricelist_jkt4
-            )
+            print(pricelist_jkt3)
         elif destination_route == 5:
-            showPriceList(
-                "4", pricelist_jkt1, pricelist_jkt2, pricelist_jkt3, pricelist_jkt4
-            )
+            print(pricelist_jkt4)
         else:
             print(
                 "Mohon masukkan input kota tujuan yang berbeda dengan kota keberangkatan!"
             )
     elif departure_route == 2:
         if destination_route == 1:
-            showPriceList(
-                "1", pricelist_mlg1, pricelist_mlg2, pricelist_mlg3, pricelist_mlg4
-            )
+            print(pricelist_mlg1)
         elif destination_route == 3:
-            showPriceList(
-                "2", pricelist_mlg1, pricelist_mlg2, pricelist_mlg3, pricelist_mlg4
-            )
+            print(pricelist_mlg2)
         elif destination_route == 4:
-            showPriceList(
-                "3", pricelist_mlg1, pricelist_mlg2, pricelist_mlg3, pricelist_mlg4
-            )
+            print(pricelist_mlg3)
         elif destination_route == 5:
-            showPriceList(
-                "4", pricelist_mlg1, pricelist_mlg2, pricelist_mlg3, pricelist_mlg4
-            )
+            print(pricelist_mlg4)
         else:
             print(
                 "Mohon masukkan input kota tujuan yang berbeda dengan kota keberangkatan!"
             )
     elif departure_route == 3:
         if destination_route == 1:
-            showPriceList(
-                "1", pricelist_bdg1, pricelist_bdg2, pricelist_bdg3, pricelist_bdg4
-            )
+            print(pricelist_bdg1)
         elif destination_route == 2:
-            showPriceList(
-                "2", pricelist_bdg1, pricelist_bdg2, pricelist_bdg3, pricelist_bdg4
-            )
+            print(pricelist_bdg2)
         elif destination_route == 4:
-            showPriceList(
-                "3", pricelist_bdg1, pricelist_bdg2, pricelist_bdg3, pricelist_bdg4
-            )
+            print(pricelist_bdg3)
         elif destination_route == 5:
-            showPriceList(
-                "4", pricelist_bdg1, pricelist_bdg2, pricelist_bdg3, pricelist_bdg4
-            )
+            print(pricelist_bdg4)
         else:
             print(
                 "Mohon masukkan input kota tujuan yang berbeda dengan kota keberangkatan!"
             )
     elif departure_route == 4:
         if destination_route == 1:
-            showPriceList(
-                "1", pricelist_ygy1, pricelist_ygy2, pricelist_ygy3, pricelist_ygy4
-            )
+            print(pricelist_ygy1)
         elif destination_route == 2:
-            showPriceList(
-                "2", pricelist_ygy1, pricelist_ygy2, pricelist_ygy3, pricelist_ygy4
-            )
+            print(pricelist_ygy2)
         elif destination_route == 3:
-            showPriceList(
-                "3", pricelist_ygy1, pricelist_ygy2, pricelist_ygy3, pricelist_ygy4
-            )
+            print(pricelist_ygy3)
         elif destination_route == 5:
-            showPriceList(
-                "4", pricelist_ygy1, pricelist_ygy2, pricelist_ygy3, pricelist_ygy4
-            )
+            print(pricelist_ygy4)
         else:
             print(
                 "Mohon masukkan input kota tujuan yang berbeda dengan kota keberangkatan!"
             )
     elif departure_route == 5:
         if destination_route == 1:
-            showPriceList(
-                "1", pricelist_sby1, pricelist_sby2, pricelist_sby3, pricelist_sby4
-            )
+            print(pricelist_sby1)
         elif destination_route == 2:
-            showPriceList(
-                "2", pricelist_sby1, pricelist_sby2, pricelist_sby3, pricelist_sby4
-            )
+            print(pricelist_sby2)
         elif destination_route == 3:
-            showPriceList(
-                "3", pricelist_sby1, pricelist_sby2, pricelist_sby3, pricelist_sby4
-            )
+            print(pricelist_sby3)
         elif destination_route == 4:
-            showPriceList(
-                "4", pricelist_sby1, pricelist_sby2, pricelist_sby3, pricelist_sby4
-            )
+            print(pricelist_sby4)
         else:
             print(
                 "Mohon masukkan input kota tujuan yang berbeda dengan kota keberangkatan!"
