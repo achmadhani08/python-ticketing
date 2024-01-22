@@ -810,22 +810,22 @@ pricelist_mlg3.add_rows(
             classes[1],
             locale.format_string(
                 "%d",
-               mlg_ticket_pricelist[mlg_routes[1]][transport[0]][classes[1]][days[0]],
+                mlg_ticket_pricelist[mlg_routes[1]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-               mlg_ticket_pricelist[mlg_routes[1]][transport[0]][classes[1]][days[1]],
+                mlg_ticket_pricelist[mlg_routes[1]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-               mlg_ticket_pricelist[mlg_routes[1]][transport[1]][classes[1]][days[0]],
+                mlg_ticket_pricelist[mlg_routes[1]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-               mlg_ticket_pricelist[mlg_routes[1]][transport[1]][classes[1]][days[1]],
+                mlg_ticket_pricelist[mlg_routes[1]][transport[1]][classes[1]][days[1]],
                 grouping=True,
             ),
         ],
@@ -1028,22 +1028,22 @@ pricelist_bdg3.add_rows(
             classes[1],
             locale.format_string(
                 "%d",
-               bdg_ticket_pricelist[bdg_routes[2]][transport[0]][classes[1]][days[0]],
+                bdg_ticket_pricelist[bdg_routes[2]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-               bdg_ticket_pricelist[bdg_routes[2]][transport[0]][classes[1]][days[1]],
+                bdg_ticket_pricelist[bdg_routes[2]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-               bdg_ticket_pricelist[bdg_routes[2]][transport[1]][classes[1]][days[0]],
+                bdg_ticket_pricelist[bdg_routes[2]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-               bdg_ticket_pricelist[bdg_routes[2]][transport[1]][classes[1]][days[1]],
+                bdg_ticket_pricelist[bdg_routes[2]][transport[1]][classes[1]][days[1]],
                 grouping=True,
             ),
         ],
@@ -1246,22 +1246,22 @@ pricelist_ygy3.add_rows(
             classes[1],
             locale.format_string(
                 "%d",
-               ygy_ticket_pricelist[ygy_routes[3]][transport[0]][classes[1]][days[0]],
+                ygy_ticket_pricelist[ygy_routes[3]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-               ygy_ticket_pricelist[ygy_routes[3]][transport[0]][classes[1]][days[1]],
+                ygy_ticket_pricelist[ygy_routes[3]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-               ygy_ticket_pricelist[ygy_routes[3]][transport[1]][classes[1]][days[0]],
+                ygy_ticket_pricelist[ygy_routes[3]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-               ygy_ticket_pricelist[ygy_routes[3]][transport[1]][classes[1]][days[1]],
+                ygy_ticket_pricelist[ygy_routes[3]][transport[1]][classes[1]][days[1]],
                 grouping=True,
             ),
         ],
@@ -1464,22 +1464,22 @@ pricelist_sby3.add_rows(
             classes[1],
             locale.format_string(
                 "%d",
-               sby_ticket_pricelist[sby_routes[4]][transport[0]][classes[1]][days[0]],
+                sby_ticket_pricelist[sby_routes[4]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-               sby_ticket_pricelist[sby_routes[4]][transport[0]][classes[1]][days[1]],
+                sby_ticket_pricelist[sby_routes[4]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-               sby_ticket_pricelist[sby_routes[4]][transport[1]][classes[1]][days[0]],
+                sby_ticket_pricelist[sby_routes[4]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-               sby_ticket_pricelist[sby_routes[4]][transport[1]][classes[1]][days[1]],
+                sby_ticket_pricelist[sby_routes[4]][transport[1]][classes[1]][days[1]],
                 grouping=True,
             ),
         ],
@@ -1583,42 +1583,90 @@ def selectPriceList():
             print(
                 "Mohon masukkan input kota tujuan yang berbeda dengan kota keberangkatan!"
             )
-    elif (departure_route == 2):
-        if (destination_route == 1):
-            showPriceList("1", pricelist_mlg1, pricelist_mlg2, pricelist_mlg3, pricelist_mlg4)
-        elif (destination_route == 3):
-            showPriceList("2", pricelist_mlg1, pricelist_mlg2, pricelist_mlg3, pricelist_mlg4)
-        elif (destination_route == 4):
-            showPriceList("3", pricelist_mlg1, pricelist_mlg2, pricelist_mlg3, pricelist_mlg4)
-        elif (destination_route == 5):
-            showPriceList("4", pricelist_mlg1, pricelist_mlg2, pricelist_mlg3, pricelist_mlg4)
-    elif (departure_route == 3):
-        if (destination_route == 1):
-            showPriceList("1", pricelist_bdg1, pricelist_bdg2, pricelist_bdg3, pricelist_bdg4)
-        elif (destination_route == 2):
-            showPriceList("2", pricelist_bdg1, pricelist_bdg2, pricelist_bdg3, pricelist_bdg4)
-        elif (destination_route == 4):
-            showPriceList("3", pricelist_bdg1, pricelist_bdg2, pricelist_bdg3, pricelist_bdg4)
-        elif (destination_route == 5):
-            showPriceList("4", pricelist_bdg1, pricelist_bdg2, pricelist_bdg3, pricelist_bdg4)
-    elif (departure_route == 4):
-        if (destination_route == 1):
-            showPriceList("1", pricelist_ygy1, pricelist_ygy2, pricelist_ygy3, pricelist_ygy4)
-        elif (destination_route == 2):
-            showPriceList("2", pricelist_ygy1, pricelist_ygy2, pricelist_ygy3, pricelist_ygy4)
-        elif (destination_route == 3):
-            showPriceList("3", pricelist_ygy1, pricelist_ygy2, pricelist_ygy3, pricelist_ygy4)
-        elif (destination_route == 5):
-            showPriceList("4", pricelist_ygy1, pricelist_ygy2, pricelist_ygy3, pricelist_ygy4)
-    elif (departure_route == 5):
-        if (destination_route == 1):
-            showPriceList("1", pricelist_sby1, pricelist_sby2, pricelist_sby3, pricelist_sby4)
-        elif (destination_route == 2):
-            showPriceList("2", pricelist_sby1, pricelist_sby2, pricelist_sby3, pricelist_sby4)
-        elif (destination_route == 3):
-            showPriceList("3", pricelist_sby1, pricelist_sby2, pricelist_sby3, pricelist_sby4)
-        elif (destination_route == 4):
-            showPriceList("4", pricelist_sby1, pricelist_sby2, pricelist_sby3, pricelist_sby4)
+    elif departure_route == 2:
+        if destination_route == 1:
+            showPriceList(
+                "1", pricelist_mlg1, pricelist_mlg2, pricelist_mlg3, pricelist_mlg4
+            )
+        elif destination_route == 3:
+            showPriceList(
+                "2", pricelist_mlg1, pricelist_mlg2, pricelist_mlg3, pricelist_mlg4
+            )
+        elif destination_route == 4:
+            showPriceList(
+                "3", pricelist_mlg1, pricelist_mlg2, pricelist_mlg3, pricelist_mlg4
+            )
+        elif destination_route == 5:
+            showPriceList(
+                "4", pricelist_mlg1, pricelist_mlg2, pricelist_mlg3, pricelist_mlg4
+            )
+        else:
+            print(
+                "Mohon masukkan input kota tujuan yang berbeda dengan kota keberangkatan!"
+            )
+    elif departure_route == 3:
+        if destination_route == 1:
+            showPriceList(
+                "1", pricelist_bdg1, pricelist_bdg2, pricelist_bdg3, pricelist_bdg4
+            )
+        elif destination_route == 2:
+            showPriceList(
+                "2", pricelist_bdg1, pricelist_bdg2, pricelist_bdg3, pricelist_bdg4
+            )
+        elif destination_route == 4:
+            showPriceList(
+                "3", pricelist_bdg1, pricelist_bdg2, pricelist_bdg3, pricelist_bdg4
+            )
+        elif destination_route == 5:
+            showPriceList(
+                "4", pricelist_bdg1, pricelist_bdg2, pricelist_bdg3, pricelist_bdg4
+            )
+        else:
+            print(
+                "Mohon masukkan input kota tujuan yang berbeda dengan kota keberangkatan!"
+            )
+    elif departure_route == 4:
+        if destination_route == 1:
+            showPriceList(
+                "1", pricelist_ygy1, pricelist_ygy2, pricelist_ygy3, pricelist_ygy4
+            )
+        elif destination_route == 2:
+            showPriceList(
+                "2", pricelist_ygy1, pricelist_ygy2, pricelist_ygy3, pricelist_ygy4
+            )
+        elif destination_route == 3:
+            showPriceList(
+                "3", pricelist_ygy1, pricelist_ygy2, pricelist_ygy3, pricelist_ygy4
+            )
+        elif destination_route == 5:
+            showPriceList(
+                "4", pricelist_ygy1, pricelist_ygy2, pricelist_ygy3, pricelist_ygy4
+            )
+        else:
+            print(
+                "Mohon masukkan input kota tujuan yang berbeda dengan kota keberangkatan!"
+            )
+    elif departure_route == 5:
+        if destination_route == 1:
+            showPriceList(
+                "1", pricelist_sby1, pricelist_sby2, pricelist_sby3, pricelist_sby4
+            )
+        elif destination_route == 2:
+            showPriceList(
+                "2", pricelist_sby1, pricelist_sby2, pricelist_sby3, pricelist_sby4
+            )
+        elif destination_route == 3:
+            showPriceList(
+                "3", pricelist_sby1, pricelist_sby2, pricelist_sby3, pricelist_sby4
+            )
+        elif destination_route == 4:
+            showPriceList(
+                "4", pricelist_sby1, pricelist_sby2, pricelist_sby3, pricelist_sby4
+            )
+        else:
+            print(
+                "Mohon masukkan input kota tujuan yang berbeda dengan kota keberangkatan!"
+            )
 
 
 # Show hotel price at selected city destination
