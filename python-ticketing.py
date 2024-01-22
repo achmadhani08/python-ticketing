@@ -237,14 +237,17 @@ hotel_pricelist = {
     "Surabaya": {"weekday": 0000, "weekend": 0000},
 }
 
-# Header Table City
+# Header table city
 header_table_city = ["No", "Daftar Kota Keberangkatan/Tujuan"]
 
-# Header Table Hotel
+# Header table hotel
 header_table_hotel = ["Kota", "Weekday/malam", "Weekend/malam"]
 
-# Header Table Route
-header_table = [
+# Header table receipt
+header_table_receipt = ["Informasi", "Keterangan"]
+
+# Header table route
+header_table_route = [
     "Route",
     "Class",
     "Train (Weekday)",
@@ -253,49 +256,55 @@ header_table = [
     "Plane (Weekend)",
 ]
 
-routes = []  # List of routes
+# List of routes
+jkt_routes = []
+mlg_routes = []
+bdg_routes = []
+ygy_routes = []
+sby_routes = []
+
 classes = ["Economy", "First"]  # List of class type
 transport = ["train", "plane"]  # List of transportation
 days = ["weekday", "weekend"]  # Ticket
 
-for route in jkt_ticket_pricelist.keys():
-    routes.append(route)
+# Loop for route
+for jkt_route in jkt_ticket_pricelist.keys():
+    jkt_routes.append(jkt_route)  # Jakarta
+
+for mlg_route in mlg_ticket_pricelist.keys():
+    mlg_routes.append(mlg_route)  # Malang
+
+for bdg_route in bdg_ticket_pricelist.keys():
+    bdg_routes.append(bdg_route)  # Bandung
+
+for ygy_route in ygy_ticket_pricelist.keys():
+    ygy_routes.append(ygy_route)  # Yogyakarta
+
+for sby_route in sby_ticket_pricelist.keys():
+    sby_routes.append(sby_route)  # Surabaya
 
 # Create a PrettyTable instance
-table_list_city = PrettyTable()  # city
+table_list_city = PrettyTable(header_table_city)  # city
 
-# Pricelist of Hotel in Each City
-table_list_hotel_jkt = PrettyTable()
-table_list_hotel_mlg = PrettyTable()
-table_list_hotel_bdg = PrettyTable()
-table_list_hotel_ygy = PrettyTable()
-table_list_hotel_sby = PrettyTable()
+table_receipt = PrettyTable(header_table_receipt)  # receipt
+table_receipt.title = "Receipt"  # table receipt title
 
-# Pricelist of Jakarta Table
-pricelist_jkt1 = PrettyTable()
-pricelist_jkt2 = PrettyTable()
-pricelist_jkt3 = PrettyTable()
-pricelist_jkt4 = PrettyTable()
+# Pricelist of hotel in each city
+table_list_hotel_jkt = PrettyTable(header_table_hotel)
+table_list_hotel_mlg = PrettyTable(header_table_hotel)
+table_list_hotel_bdg = PrettyTable(header_table_hotel)
+table_list_hotel_ygy = PrettyTable(header_table_hotel)
+table_list_hotel_sby = PrettyTable(header_table_hotel)
 
-# Set the header table
-table_list_city.field_names = header_table_city  # Header for City Table
-
-# Header for hotel table
-table_list_hotel_jkt.field_names = (
-    table_list_hotel_mlg.field_names
-) = (
-    table_list_hotel_bdg.field_names
-) = (
-    table_list_hotel_ygy.field_names
-) = table_list_hotel_sby.field_names = header_table_hotel
-
-# Header of Jakarta route
-pricelist_jkt1.field_names = (
-    pricelist_jkt2.field_names
-) = pricelist_jkt3.field_names = pricelist_jkt4.field_names = header_table
+# Pricelist of Jakarta table
+pricelist_jkt1 = PrettyTable(header_table_route)
+pricelist_jkt2 = PrettyTable(header_table_route)
+pricelist_jkt3 = PrettyTable(header_table_route)
+pricelist_jkt4 = PrettyTable(header_table_route)
 
 # Set the alignment of columns
-table_list_city.align = "c"
+table_list_city.align = "c"  # city
+table_receipt.align = "l"  # receipt
 
 # Alignment of hotel columns
 table_list_hotel_jkt.align = (
@@ -309,7 +318,7 @@ pricelist_jkt1.align = (
     pricelist_jkt2.align
 ) = pricelist_jkt3.align = pricelist_jkt4.align = "c"
 
-# Adding row table city list
+# Adding rows table city list
 table_list_city.add_rows(
     [
         ["1", "Jakarta"],
@@ -320,7 +329,7 @@ table_list_city.add_rows(
     ]
 )
 
-#!! Hotel Table Rows
+#!! Hotel table rows
 table_list_hotel_jkt.add_row(
     [
         city_list[0],
@@ -396,57 +405,61 @@ table_list_hotel_sby.add_row(
         ),
     ]
 )
-#!! End of Hotel Table Route
+#!! End of hotel table rows
+
+#!! Receipt table
+
+#!! End of receipt table rows
 
 #!! Jakarta Route
 # Adding row table route 1: Jakarta - Malang
 pricelist_jkt1.add_rows(
     [
         [
-            routes[0],
+            jkt_routes[0],
             classes[0],
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[0]][transport[0]][classes[0]][days[0]],
+                jkt_ticket_pricelist[jkt_routes[0]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[0]][transport[0]][classes[0]][days[1]],
+                jkt_ticket_pricelist[jkt_routes[0]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[0]][transport[1]][classes[0]][days[0]],
+                jkt_ticket_pricelist[jkt_routes[0]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[0]][transport[1]][classes[0]][days[1]],
+                jkt_ticket_pricelist[jkt_routes[0]][transport[1]][classes[0]][days[1]],
                 grouping=True,
             ),
         ],
         [
-            routes[0],
+            jkt_routes[0],
             classes[1],
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[0]][transport[0]][classes[1]][days[0]],
+                jkt_ticket_pricelist[jkt_routes[0]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[0]][transport[0]][classes[1]][days[1]],
+                jkt_ticket_pricelist[jkt_routes[0]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[0]][transport[1]][classes[1]][days[0]],
+                jkt_ticket_pricelist[jkt_routes[0]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[0]][transport[1]][classes[1]][days[1]],
+                jkt_ticket_pricelist[jkt_routes[0]][transport[1]][classes[1]][days[1]],
                 grouping=True,
             ),
         ],
@@ -457,50 +470,50 @@ pricelist_jkt1.add_rows(
 pricelist_jkt2.add_rows(
     [
         [
-            routes[1],
+            jkt_routes[1],
             classes[0],
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[1]][transport[0]][classes[0]][days[0]],
+                jkt_ticket_pricelist[jkt_routes[1]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[1]][transport[0]][classes[0]][days[1]],
+                jkt_ticket_pricelist[jkt_routes[1]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[1]][transport[1]][classes[0]][days[0]],
+                jkt_ticket_pricelist[jkt_routes[1]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[1]][transport[1]][classes[0]][days[1]],
+                jkt_ticket_pricelist[jkt_routes[1]][transport[1]][classes[0]][days[1]],
                 grouping=True,
             ),
         ],
         [
-            routes[1],
+            jkt_routes[1],
             classes[1],
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[1]][transport[0]][classes[1]][days[0]],
+                jkt_ticket_pricelist[jkt_routes[1]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[1]][transport[0]][classes[1]][days[1]],
+                jkt_ticket_pricelist[jkt_routes[1]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[1]][transport[1]][classes[1]][days[0]],
+                jkt_ticket_pricelist[jkt_routes[1]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[1]][transport[1]][classes[1]][days[1]],
+                jkt_ticket_pricelist[jkt_routes[1]][transport[1]][classes[1]][days[1]],
                 grouping=True,
             ),
         ],
@@ -511,50 +524,50 @@ pricelist_jkt2.add_rows(
 pricelist_jkt3.add_rows(
     [
         [
-            routes[2],
+            jkt_routes[2],
             classes[0],
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[2]][transport[0]][classes[0]][days[0]],
+                jkt_ticket_pricelist[jkt_routes[2]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[2]][transport[0]][classes[0]][days[1]],
+                jkt_ticket_pricelist[jkt_routes[2]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[2]][transport[1]][classes[0]][days[0]],
+                jkt_ticket_pricelist[jkt_routes[2]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[2]][transport[1]][classes[0]][days[1]],
+                jkt_ticket_pricelist[jkt_routes[2]][transport[1]][classes[0]][days[1]],
                 grouping=True,
             ),
         ],
         [
-            routes[2],
+            jkt_routes[2],
             classes[1],
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[2]][transport[0]][classes[1]][days[0]],
+                jkt_ticket_pricelist[jkt_routes[2]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[2]][transport[0]][classes[1]][days[1]],
+                jkt_ticket_pricelist[jkt_routes[2]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[2]][transport[1]][classes[1]][days[0]],
+                jkt_ticket_pricelist[jkt_routes[2]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[2]][transport[1]][classes[1]][days[1]],
+                jkt_ticket_pricelist[jkt_routes[2]][transport[1]][classes[1]][days[1]],
                 grouping=True,
             ),
         ],
@@ -565,50 +578,50 @@ pricelist_jkt3.add_rows(
 pricelist_jkt4.add_rows(
     [
         [
-            routes[3],
+            jkt_routes[3],
             classes[0],
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[3]][transport[0]][classes[0]][days[0]],
+                jkt_ticket_pricelist[jkt_routes[3]][transport[0]][classes[0]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[3]][transport[0]][classes[0]][days[1]],
+                jkt_ticket_pricelist[jkt_routes[3]][transport[0]][classes[0]][days[1]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[3]][transport[1]][classes[0]][days[0]],
+                jkt_ticket_pricelist[jkt_routes[3]][transport[1]][classes[0]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[3]][transport[1]][classes[0]][days[1]],
+                jkt_ticket_pricelist[jkt_routes[3]][transport[1]][classes[0]][days[1]],
                 grouping=True,
             ),
         ],
         [
-            routes[3],
+            jkt_routes[3],
             classes[1],
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[3]][transport[0]][classes[1]][days[0]],
+                jkt_ticket_pricelist[jkt_routes[3]][transport[0]][classes[1]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[3]][transport[0]][classes[1]][days[1]],
+                jkt_ticket_pricelist[jkt_routes[3]][transport[0]][classes[1]][days[1]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[3]][transport[1]][classes[1]][days[0]],
+                jkt_ticket_pricelist[jkt_routes[3]][transport[1]][classes[1]][days[0]],
                 grouping=True,
             ),
             locale.format_string(
                 "%d",
-                jkt_ticket_pricelist[routes[3]][transport[1]][classes[1]][days[1]],
+                jkt_ticket_pricelist[jkt_routes[3]][transport[1]][classes[1]][days[1]],
                 grouping=True,
             ),
         ],
@@ -635,7 +648,7 @@ def showPriceList(
         print(pricelist_route_4)
 
 
-# select pricelist by input user
+# Select pricelist by input user
 def selectPriceList():
     if departure_route == 1:
         if destination_route == 2:
@@ -696,6 +709,7 @@ def selectPriceList():
     #         showPriceList("4", pricelist_sby1, pricelist_sby2, pricelist_sby3, pricelist_sby4)
 
 
+# Show hotel price at selected city destination
 def showHotelPrice():
     if destination_route == 1:
         print(table_list_hotel_jkt)
@@ -755,9 +769,92 @@ bookHotel = int(
 
 roomHotel = int
 
+
+# Adding rows table receipt
+# jkt_ticket_pricelist[jkt_routes[0]][transport[0]][classes[0]][days[0]]
+# hotel_pricelist[city_list[4]][days[0]] * roomHotel if bookHotel == 1 else 0
+def printReceipt(transport_price, hotel_price):
+    priceTotal = (transport_price * countTicket) + (
+        hotel_price * roomHotel if bookHotel == 1 else 0
+    )
+    table_receipt.add_row(["Kota keberangkatan:", city_list[0]])
+    table_receipt.add_row(["Kota tujuan:", city_list[1]])
+    table_receipt.add_row(["Tanggal keberangkatan:", dateOfDeparture])
+    table_receipt.add_row(
+        ["Jenis tiket:", "Weekend" if isWeekend == True else "Weekday"]
+    )
+    table_receipt.add_row(
+        ["Jenis transportasi:", "Kereta" if selectTransportType == 1 else "Pesawat"]
+    )
+    table_receipt.add_row(
+        ["Kelas tiket:", "Ekonomi" if selectClassType == 1 else "First"]
+    )
+    table_receipt.add_row(["Banyak tiket:", countTicket])
+    table_receipt.add_row(["Booking hotel:", "Ya" if bookHotel == 1 else "Tidak"])
+    table_receipt.add_row(
+        ["Banyak kamar:", roomHotel if bookHotel == 1 else 0], divider=True
+    )
+
+    # Price section
+    table_receipt.add_row(
+        [
+            "Harga tiket transportasi:",
+            locale.format_string(
+                "%d",
+                transport_price * countTicket,
+                grouping=True,
+            ),
+        ]
+    )
+    table_receipt.add_row(
+        [
+            "Harga kamar hotel:",
+            locale.format_string(
+                "%d",
+                hotel_price * roomHotel if bookHotel == 1 else 0,
+                grouping=True,
+            ),
+        ],
+        divider=True,
+    )
+    table_receipt.add_row(
+        [
+            "Total harga:",
+            locale.format_string(
+                "%d",
+                priceTotal,
+                grouping=True,
+            ),
+        ]
+    )
+
+    print(table_receipt)
+
+
+# Selecting price depend on user input route and hotel
+def selectingPrice():
+    if departure_route == 1 and destination_route == 2:
+        if selectTransportType == 1:
+            if selectClassType == 1:
+                if isWeekend == False:
+                    printReceipt(
+                        jkt_ticket_pricelist[jkt_routes[0]][transport[0]][classes[0]][
+                            days[0]
+                        ],
+                        hotel_pricelist[city_list[1]][days[0]],
+                    )
+                elif isWeekend == True:
+                    printReceipt(
+                        jkt_ticket_pricelist[jkt_routes[0]][transport[0]][classes[0]][
+                            days[1]
+                        ],
+                        hotel_pricelist[city_list[1]][days[1]],
+                    )
+
+
 if bookHotel == 1:
     showHotelPrice()
     roomHotel = int(input("Berapa banyak kamar yang Anda pesan?"))
     # printReceipt()
-# else:
-#     printReceipt()
+else:
+    printReceipt()
