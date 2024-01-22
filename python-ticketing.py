@@ -1810,6 +1810,115 @@ def selectingPrice():
                         ],
                         hotel_pricelist[city_list[1]][days[1]],
                     )
+            elif selectClassType == 2:
+                if isWeekend == False:
+                    printReceipt(
+                        jkt_ticket_pricelist[jkt_routes[0]][transport[0]][classes[1]][
+                            days[0]
+                        ],
+                        hotel_pricelist[city_list[1]][days[0]],
+                    )
+                elif isWeekend == True:
+                    printReceipt(
+                        jkt_ticket_pricelist[jkt_routes[0]][transport[0]][classes[1]][
+                            days[1]
+                        ],
+                        hotel_pricelist[city_list[1]][days[1]],
+                    )
+        elif selectTransportType == 2:
+            if selectClassType == 1:
+                if isWeekend == False:
+                    printReceipt(
+                        jkt_ticket_pricelist[jkt_routes[0]][transport[1]][classes[0]][
+                            days[0]
+                        ],
+                        hotel_pricelist[city_list[1]][days[0]],
+                    )
+                elif isWeekend == True:
+                    printReceipt(
+                        jkt_ticket_pricelist[jkt_routes[0]][transport[1]][classes[0]][
+                            days[1]
+                        ],
+                        hotel_pricelist[city_list[1]][days[1]],
+                    )
+            elif selectClassType == 2:
+                if isWeekend == False:
+                    printReceipt(
+                        jkt_ticket_pricelist[jkt_routes[0]][transport[1]][classes[1]][
+                            days[0]
+                        ],
+                        hotel_pricelist[city_list[1]][days[0]],
+                    )
+                elif isWeekend == True:
+                    printReceipt(
+                        jkt_ticket_pricelist[jkt_routes[0]][transport[1]][classes[1]][
+                            days[1]
+                        ],
+                        hotel_pricelist[city_list[1]][days[1]],
+                    )
+    elif departure_route == 1 and destination_route == 3:
+        if selectTransportType == 1:
+            if selectClassType == 1:
+                if isWeekend == False:
+                    printReceipt(
+                        jkt_ticket_pricelist[jkt_routes[1]][transport[0]][classes[0]][
+                            days[0]
+                        ],
+                        hotel_pricelist[city_list[1]][days[0]],
+                    )
+                elif isWeekend == True:
+                    printReceipt(
+                        jkt_ticket_pricelist[jkt_routes[1]][transport[0]][classes[0]][
+                            days[1]
+                        ],
+                        hotel_pricelist[city_list[1]][days[1]],
+                    )
+            elif selectClassType == 2:
+                if isWeekend == False:
+                    printReceipt(
+                        jkt_ticket_pricelist[jkt_routes[1]][transport[0]][classes[1]][
+                            days[0]
+                        ],
+                        hotel_pricelist[city_list[1]][days[0]],
+                    )
+                elif isWeekend == True:
+                    printReceipt(
+                        jkt_ticket_pricelist[jkt_routes[1]][transport[0]][classes[1]][
+                            days[1]
+                        ],
+                        hotel_pricelist[city_list[1]][days[1]],
+                    )
+        elif selectTransportType == 2:
+            if selectClassType == 1:
+                if isWeekend == False:
+                    printReceipt(
+                        jkt_ticket_pricelist[jkt_routes[1]][transport[1]][classes[0]][
+                            days[0]
+                        ],
+                        hotel_pricelist[city_list[1]][days[0]],
+                    )
+                elif isWeekend == True:
+                    printReceipt(
+                        jkt_ticket_pricelist[jkt_routes[1]][transport[1]][classes[0]][
+                            days[1]
+                        ],
+                        hotel_pricelist[city_list[1]][days[1]],
+                    )
+            elif selectClassType == 2:
+                if isWeekend == False:
+                    printReceipt(
+                        jkt_ticket_pricelist[jkt_routes[1]][transport[1]][classes[1]][
+                            days[0]
+                        ],
+                        hotel_pricelist[city_list[1]][days[0]],
+                    )
+                elif isWeekend == True:
+                    printReceipt(
+                        jkt_ticket_pricelist[jkt_routes[1]][transport[1]][classes[1]][
+                            days[1]
+                        ],
+                        hotel_pricelist[city_list[1]][days[1]],
+                    )
 
 
 if bookHotel == 1:
