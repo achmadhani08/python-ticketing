@@ -230,11 +230,11 @@ sby_ticket_pricelist = {
 
 # Pricelist Hotels
 hotel_pricelist = {
-    "Jakarta": {"weekday": 0000, "weekend": 0000},
-    "Malang": {"weekday": 0000, "weekend": 0000},
-    "Bandung": {"weekday": 0000, "weekend": 0000},
-    "Yogyakarta": {"weekday": 0000, "weekend": 0000},
-    "Surabaya": {"weekday": 0000, "weekend": 0000},
+    "Jakarta": {"weekday": 1050000, "weekend": 1330000},
+    "Malang": {"weekday": 650000, "weekend": 700000},
+    "Bandung": {"weekday": 1020000, "weekend": 1070000},
+    "Yogyakarta": {"weekday": 950000, "weekend": 1000000},
+    "Surabaya": {"weekday": 970000, "weekend": 1020000},
 }
 
 # Header Table City
@@ -615,6 +615,878 @@ pricelist_jkt4.add_rows(
     ]
 )
 #!! End of Jakarta Route
+
+#!! Malang Route
+# Adding row table route 1: Malang - Jakarta
+pricelist_mlg1.add_rows(
+    [
+        [
+            routes[1],
+            classes[0],
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[0]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[0]][classes[0]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[1]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[1]][classes[0]][days[1]],
+                grouping=True,
+            ),
+        ],
+        [
+            routes[1],
+            classes[1],
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[0]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[0]][classes[1]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[1]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[1]][classes[1]][days[1]],
+                grouping=True,
+            ),
+        ],
+    ]
+)
+
+# Adding row table route 2: Malang - Bandung
+pricelist_mlg2.add_rows(
+    [
+        [
+            routes[1],
+            classes[0],
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[0]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[0]][classes[0]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[1]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[1]][classes[0]][days[1]],
+                grouping=True,
+            ),
+        ],
+        [
+            routes[1],
+            classes[1],
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[0]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[0]][classes[1]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[1]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[1]][classes[1]][days[1]],
+                grouping=True,
+            ),
+        ],
+    ]
+)
+
+# Adding row table route 3: Malang - Yogyakarta
+pricelist_mlg3.add_rows(
+    [
+        [
+            routes[1],
+            classes[0],
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[0]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[0]][classes[0]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[1]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[1]][classes[0]][days[1]],
+                grouping=True,
+            ),
+        ],
+        [
+            routes[1],
+            classes[1],
+            locale.format_string(
+                "%d",
+               mlg_ticket_pricelist[routes[1]][transport[0]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+               mlg_ticket_pricelist[routes[1]][transport[0]][classes[1]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+               mlg_ticket_pricelist[routes[1]][transport[1]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+               mlg_ticket_pricelist[routes[1]][transport[1]][classes[1]][days[1]],
+                grouping=True,
+            ),
+        ],
+    ]
+)
+
+# Adding row table route 4: Malang - Surabaya
+pricelist_mlg4.add_rows(
+    [
+        [
+            routes[1],
+            classes[0],
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[0]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[0]][classes[0]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[1]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[1]][classes[0]][days[1]],
+                grouping=True,
+            ),
+        ],
+        [
+            routes[1],
+            classes[1],
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[0]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[0]][classes[1]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[1]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                mlg_ticket_pricelist[routes[1]][transport[1]][classes[1]][days[1]],
+                grouping=True,
+            ),
+        ],
+    ]
+)
+#!! End of Malang Route
+
+#!! Bandung Route
+# Adding row table route 1: Bandung - Jakarta
+pricelist_bdg1.add_rows(
+    [
+        [
+            routes[2],
+            classes[0],
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[0]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[0]][classes[0]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[1]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[1]][classes[0]][days[1]],
+                grouping=True,
+            ),
+        ],
+        [
+            routes[2],
+            classes[1],
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[0]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[0]][classes[1]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[1]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[1]][classes[1]][days[1]],
+                grouping=True,
+            ),
+        ],
+    ]
+)
+
+# Adding row table route 2: Bandung - Malang
+pricelist_bdg2.add_rows(
+    [
+        [
+            routes[2],
+            classes[0],
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[0]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[0]][classes[0]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[1]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[1]][classes[0]][days[1]],
+                grouping=True,
+            ),
+        ],
+        [
+            routes[2],
+            classes[1],
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[0]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[0]][classes[1]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[1]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[1]][classes[1]][days[1]],
+                grouping=True,
+            ),
+        ],
+    ]
+)
+
+# Adding row table route 3: Bandung - Yogyakarta
+pricelist_bdg3.add_rows(
+    [
+        [
+            routes[2],
+            classes[0],
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[0]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[0]][classes[0]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[1]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[1]][classes[0]][days[1]],
+                grouping=True,
+            ),
+        ],
+        [
+            routes[2],
+            classes[1],
+            locale.format_string(
+                "%d",
+               bdg_ticket_pricelist[routes[2]][transport[0]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+               bdg_ticket_pricelist[routes[2]][transport[0]][classes[1]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+               bdg_ticket_pricelist[routes[2]][transport[1]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+               bdg_ticket_pricelist[routes[2]][transport[1]][classes[1]][days[1]],
+                grouping=True,
+            ),
+        ],
+    ]
+)
+
+# Adding row table route 4: Bandung - Surabaya
+pricelist_bdg4.add_rows(
+    [
+        [
+            routes[2],
+            classes[0],
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[0]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[0]][classes[0]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[1]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[1]][classes[0]][days[1]],
+                grouping=True,
+            ),
+        ],
+        [
+            routes[2],
+            classes[1],
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[0]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[0]][classes[1]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[1]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                bdg_ticket_pricelist[routes[2]][transport[1]][classes[1]][days[1]],
+                grouping=True,
+            ),
+        ],
+    ]
+)
+#!! End of Bandung Route
+
+#!! Yogyakarta Route
+# Adding row table route 1: Yogyakarta - Jakarta
+pricelist_ygy1.add_rows(
+    [
+        [
+            routes[3],
+            classes[0],
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[0]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[0]][classes[0]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[1]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[1]][classes[0]][days[1]],
+                grouping=True,
+            ),
+        ],
+        [
+            routes[3],
+            classes[1],
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[0]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[0]][classes[1]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[1]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[1]][classes[1]][days[1]],
+                grouping=True,
+            ),
+        ],
+    ]
+)
+
+# Adding row table route 2: Yogyakarta - Malang
+pricelist_ygy2.add_rows(
+    [
+        [
+            routes[3],
+            classes[0],
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[0]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[0]][classes[0]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[1]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[1]][classes[0]][days[1]],
+                grouping=True,
+            ),
+        ],
+        [
+            routes[3],
+            classes[1],
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[0]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[0]][classes[1]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[1]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[1]][classes[1]][days[1]],
+                grouping=True,
+            ),
+        ],
+    ]
+)
+
+# Adding row table route 3: Yogyakarta - Bandung
+pricelist_ygy3.add_rows(
+    [
+        [
+            routes[3],
+            classes[0],
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[0]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[0]][classes[0]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[1]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[1]][classes[0]][days[1]],
+                grouping=True,
+            ),
+        ],
+        [
+            routes[3],
+            classes[1],
+            locale.format_string(
+                "%d",
+               ygy_ticket_pricelist[routes[3]][transport[0]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+               ygy_ticket_pricelist[routes[3]][transport[0]][classes[1]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+               ygy_ticket_pricelist[routes[3]][transport[1]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+               ygy_ticket_pricelist[routes[3]][transport[1]][classes[1]][days[1]],
+                grouping=True,
+            ),
+        ],
+    ]
+)
+
+# Adding row table route 4: Yogyakarta - Surabaya
+pricelist_ygy4.add_rows(
+    [
+        [
+            routes[3],
+            classes[0],
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[0]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[0]][classes[0]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[1]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[1]][classes[0]][days[1]],
+                grouping=True,
+            ),
+        ],
+        [
+            routes[3],
+            classes[1],
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[0]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[0]][classes[1]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[1]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                ygy_ticket_pricelist[routes[3]][transport[1]][classes[1]][days[1]],
+                grouping=True,
+            ),
+        ],
+    ]
+)
+#!! End of Yogyakarta Route
+
+#!! Surabaya Route
+# Adding row table route 1: Surabaya - Jakarta
+pricelist_sby1.add_rows(
+    [
+        [
+            routes[4],
+            classes[0],
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[0]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[0]][classes[0]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[1]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[1]][classes[0]][days[1]],
+                grouping=True,
+            ),
+        ],
+        [
+            routes[4],
+            classes[1],
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[0]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[0]][classes[1]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[1]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[1]][classes[1]][days[1]],
+                grouping=True,
+            ),
+        ],
+    ]
+)
+
+# Adding row table route 2: Surabaya - Malang
+pricelist_sby2.add_rows(
+    [
+        [
+            routes[4],
+            classes[0],
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[0]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[0]][classes[0]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[1]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[1]][classes[0]][days[1]],
+                grouping=True,
+            ),
+        ],
+        [
+            routes[4],
+            classes[1],
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[0]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[0]][classes[1]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[1]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[1]][classes[1]][days[1]],
+                grouping=True,
+            ),
+        ],
+    ]
+)
+
+# Adding row table route 3: Surabaya - Bandung
+pricelist_sby3.add_rows(
+    [
+        [
+            routes[4],
+            classes[0],
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[0]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[0]][classes[0]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[1]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[1]][classes[0]][days[1]],
+                grouping=True,
+            ),
+        ],
+        [
+            routes[4],
+            classes[1],
+            locale.format_string(
+                "%d",
+               sby_ticket_pricelist[routes[4]][transport[0]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+               sby_ticket_pricelist[routes[4]][transport[0]][classes[1]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+               sby_ticket_pricelist[routes[4]][transport[1]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+               sby_ticket_pricelist[routes[4]][transport[1]][classes[1]][days[1]],
+                grouping=True,
+            ),
+        ],
+    ]
+)
+
+# Adding row table route 4: Surabaya - Yogyakarta
+pricelist_sby4.add_rows(
+    [
+        [
+            routes[4],
+            classes[0],
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[0]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[0]][classes[0]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[1]][classes[0]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[1]][classes[0]][days[1]],
+                grouping=True,
+            ),
+        ],
+        [
+            routes[4],
+            classes[1],
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[0]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[0]][classes[1]][days[1]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[1]][classes[1]][days[0]],
+                grouping=True,
+            ),
+            locale.format_string(
+                "%d",
+                sby_ticket_pricelist[routes[4]][transport[1]][classes[1]][days[1]],
+                grouping=True,
+            ),
+        ],
+    ]
+)
+#!! End of Surabaya Route
 
 
 # Print the table pricelist route
