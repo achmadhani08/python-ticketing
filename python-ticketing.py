@@ -1,11 +1,12 @@
 import locale
+from datetime import datetime
 from prettytable import PrettyTable
 
 # set locale for currency format number
 locale.setlocale(locale.LC_ALL, "id_ID")
 
 # List kota
-list_kota = ["Jakarta", "Malang", "Bandung", "Yogyakarta", "Surabaya"]
+city_list = ["Jakarta", "Malang", "Bandung", "Yogyakarta", "Surabaya"]
 
 # Pricelist Ticket Jakarta
 jkt_ticket_pricelist = {
@@ -262,8 +263,15 @@ for route in jkt_ticket_pricelist.keys():
 
 # Create a PrettyTable instance
 table_list_city = PrettyTable()  # city
-table_list_hotel = PrettyTable()  # hotel
 
+# Pricelist of Hotel in Each City
+table_list_hotel_jkt = PrettyTable()
+table_list_hotel_mlg = PrettyTable()
+table_list_hotel_bdg = PrettyTable()
+table_list_hotel_ygy = PrettyTable()
+table_list_hotel_sby = PrettyTable()
+
+# Pricelist of Jakarta Table
 pricelist_jkt1 = PrettyTable()
 pricelist_jkt2 = PrettyTable()
 pricelist_jkt3 = PrettyTable()
@@ -271,14 +279,32 @@ pricelist_jkt4 = PrettyTable()
 
 # Set the header table
 table_list_city.field_names = header_table_city  # Header for City Table
-table_list_hotel.field_names = header_table_hotel  # Header for Hotel Table
 
+# Header for hotel table
+table_list_hotel_jkt.field_names = (
+    table_list_hotel_mlg.field_names
+) = (
+    table_list_hotel_bdg.field_names
+) = (
+    table_list_hotel_ygy.field_names
+) = table_list_hotel_sby.field_names = header_table_hotel
+
+# Header of Jakarta route
 pricelist_jkt1.field_names = (
     pricelist_jkt2.field_names
 ) = pricelist_jkt3.field_names = pricelist_jkt4.field_names = header_table
 
 # Set the alignment of columns
-table_list_city.align = "l"
+table_list_city.align = "c"
+
+# Alignment of hotel columns
+table_list_hotel_jkt.align = (
+    table_list_hotel_mlg.align
+) = (
+    table_list_hotel_bdg.align
+) = table_list_hotel_ygy.align = table_list_hotel_sby.align = "c"
+
+# Alignment of Jakarta route columns
 pricelist_jkt1.align = (
     pricelist_jkt2.align
 ) = pricelist_jkt3.align = pricelist_jkt4.align = "c"
@@ -294,6 +320,85 @@ table_list_city.add_rows(
     ]
 )
 
+#!! Hotel Table Rows
+table_list_hotel_jkt.add_row(
+    [
+        city_list[0],
+        locale.format_string(
+            "%d",
+            hotel_pricelist[city_list[0]][days[0]],
+            grouping=True,
+        ),
+        locale.format_string(
+            "%d",
+            hotel_pricelist[city_list[0]][days[1]],
+            grouping=True,
+        ),
+    ]
+)
+table_list_hotel_mlg.add_row(
+    [
+        city_list[1],
+        locale.format_string(
+            "%d",
+            hotel_pricelist[city_list[1]][days[0]],
+            grouping=True,
+        ),
+        locale.format_string(
+            "%d",
+            hotel_pricelist[city_list[1]][days[1]],
+            grouping=True,
+        ),
+    ]
+)
+table_list_hotel_bdg.add_row(
+    [
+        city_list[2],
+        locale.format_string(
+            "%d",
+            hotel_pricelist[city_list[2]][days[0]],
+            grouping=True,
+        ),
+        locale.format_string(
+            "%d",
+            hotel_pricelist[city_list[2]][days[1]],
+            grouping=True,
+        ),
+    ]
+)
+table_list_hotel_ygy.add_row(
+    [
+        city_list[3],
+        locale.format_string(
+            "%d",
+            hotel_pricelist[city_list[3]][days[0]],
+            grouping=True,
+        ),
+        locale.format_string(
+            "%d",
+            hotel_pricelist[city_list[3]][days[1]],
+            grouping=True,
+        ),
+    ]
+)
+table_list_hotel_sby.add_row(
+    [
+        city_list[4],
+        locale.format_string(
+            "%d",
+            hotel_pricelist[city_list[4]][days[0]],
+            grouping=True,
+        ),
+        locale.format_string(
+            "%d",
+            hotel_pricelist[city_list[4]][days[1]],
+            grouping=True,
+        ),
+    ]
+)
+#!! End of Hotel Table Route
+
+#!! Jakarta Route
 # Adding row table route 1: Jakarta - Malang
 pricelist_jkt1.add_rows(
     [
@@ -509,9 +614,10 @@ pricelist_jkt4.add_rows(
         ],
     ]
 )
+#!! End of Jakarta Route
 
 
-# Print the table
+# Print the table pricelist route
 def showPriceList(
     route_number,
     pricelist_route_1,
@@ -527,18 +633,6 @@ def showPriceList(
         print(pricelist_route_3)
     elif route_number == "4":
         print(pricelist_route_4)
-
-
-# Show List City
-print(table_list_city)
-
-# Input Departure Route
-departure_route = int(input("Masukkan nomor kota keberangkatan "))
-print("Anda dari:", departure_route)
-
-# Inpute Destination Route
-destination_route = int(input("Masukkan nomor kota tujuan "))
-print("Anda menuju:", destination_route)
 
 
 # select pricelist by input user
@@ -602,7 +696,68 @@ def selectPriceList():
     #         showPriceList("4", pricelist_sby1, pricelist_sby2, pricelist_sby3, pricelist_sby4)
 
 
-# Show table
-# showPriceList("4", pricelist_jkt1, pricelist_jkt2, pricelist_jkt3, pricelist_jkt4)
+def showHotelPrice():
+    if destination_route == 1:
+        print(table_list_hotel_jkt)
+    elif destination_route == 2:
+        print(table_list_hotel_mlg)
+    elif destination_route == 3:
+        print(table_list_hotel_bdg)
+    elif destination_route == 4:
+        print(table_list_hotel_ygy)
+    elif destination_route == 5:
+        print(table_list_hotel_sby)
+
+
+#!! Start interact with user
+# Show List City
+print(table_list_city)
+
+# Input Departure Route
+departure_route = int(input("Masukkan nomor kota keberangkatan "))
+print("Anda dari:", departure_route)
+
+# Inpute Destination Route
+destination_route = int(input("Masukkan nomor kota tujuan "))
+print("Anda menuju:", destination_route)
 
 selectPriceList()
+
+dateOfDeparture = str(input("Masukkan tanggal keberangkatan! (tanggal bulan tahun) "))
+
+date_object = datetime.strptime(dateOfDeparture, "%d %B %Y")
+
+isWeekend = bool
+
+# Check if the day of the week is weekend // 0 Monday, 6 Sunday
+if date_object.weekday() in [5, 6]:
+    print("Anda akan memesan tiket jenis weekend")
+    isWeekend = True
+    print(isWeekend)
+else:
+    print("Anda akan memesan tiket jenis weekday")
+    isWeekend = False
+    print(isWeekend)
+
+selectTransportType = int(
+    input("Tiket transportasi apa yang Anda pesan? (1. Kereta | 2. Pesawat) ")
+)
+
+selectClassType = int(
+    input("Tiket kelas apa yang Anda pesan? (1. Economy | 2. First) ")
+)
+
+countTicket = int(input("Berapa banyak tiket yang Anda pesan? "))
+
+bookHotel = int(
+    input("Apakah Anda ingin memesan hotel di tempat tujuan? (1. Ya | 2. Tidak) ")
+)
+
+roomHotel = int
+
+if bookHotel == 1:
+    showHotelPrice()
+    roomHotel = int(input("Berapa banyak kamar yang Anda pesan?"))
+    # printReceipt()
+# else:
+#     printReceipt()
