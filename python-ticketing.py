@@ -8,7 +8,7 @@ locale.setlocale(locale.LC_ALL, "id_ID")
 # List kota
 city_list = ["Jakarta", "Malang", "Bandung", "Yogyakarta", "Surabaya"]
 
-# Pricelist Ticket Jakarta
+# Pricelist ticket Jakarta
 jkt_ticket_pricelist = {
     "Jakarta - Malang": {
         "train": {
@@ -52,7 +52,7 @@ jkt_ticket_pricelist = {
     },
 }
 
-# Pricelist Ticket Malang
+# Pricelist ticket Malang
 mlg_ticket_pricelist = {
     "Malang - Jakarta": {
         "train": {
@@ -96,7 +96,7 @@ mlg_ticket_pricelist = {
     },
 }
 
-# Pricelist Ticket Bandung
+# Pricelist ticket Bandung
 bdg_ticket_pricelist = {
     "Bandung - Jakarta": {
         "train": {
@@ -140,7 +140,7 @@ bdg_ticket_pricelist = {
     },
 }
 
-# Pricelist Ticket Yogyakarta
+# Pricelist ticket Yogyakarta
 ygy_ticket_pricelist = {
     "Yogyakarta - Jakarta": {
         "train": {
@@ -184,7 +184,7 @@ ygy_ticket_pricelist = {
     },
 }
 
-# Pricelist Ticket Surabaya
+# Pricelist ticket Surabaya
 sby_ticket_pricelist = {
     "Surabaya - Jakarta": {
         "train": {
@@ -228,7 +228,7 @@ sby_ticket_pricelist = {
     },
 }
 
-# Pricelist Hotels
+# Pricelist hotels
 hotel_pricelist = {
     "Jakarta": {"weekday": 1050000, "weekend": 1330000},
     "Malang": {"weekday": 650000, "weekend": 700000},
@@ -265,7 +265,7 @@ sby_routes = []
 
 classes = ["Economy", "First"]  # List of class type
 transport = ["train", "plane"]  # List of transportation
-days = ["weekday", "weekend"]  # Ticket
+days = ["weekday", "weekend"]  # Type of ticket
 
 # Loop for route
 for jkt_route in jkt_ticket_pricelist.keys():
@@ -284,10 +284,10 @@ for sby_route in sby_ticket_pricelist.keys():
     sby_routes.append(sby_route)  # Surabaya
 
 # Create a PrettyTable instance
-table_list_city = PrettyTable(header_table_city)  # city
+table_list_city = PrettyTable(header_table_city)  # City table
 
-table_receipt = PrettyTable(header_table_receipt)  # receipt
-table_receipt.title = "Receipt"  # table receipt title
+table_receipt = PrettyTable(header_table_receipt)  # Receipt table
+table_receipt.title = "Receipt"  # Table receipt title
 
 # Pricelist of hotel in each city
 table_list_hotel_jkt = PrettyTable(header_table_hotel)
@@ -327,8 +327,8 @@ pricelist_sby3 = PrettyTable(header_table_route)
 pricelist_sby4 = PrettyTable(header_table_route)
 
 # Set the alignment of columns
-table_list_city.align = "c"  # city
-table_receipt.align = "l"  # receipt
+table_list_city.align = "c"  # City table
+table_receipt.align = "l"  # Receipt table
 
 # Alignment of hotel columns
 table_list_hotel_jkt.align = (
@@ -1796,7 +1796,7 @@ def showHotelPrice():
 
 
 #!! Start interact with user
-# Show List City
+# Show list city
 print(table_list_city)
 
 # Input departure route
@@ -1836,6 +1836,7 @@ selectPriceList()  # Show pricelist of selected route
 
 dateOfDeparture = str(input("Masukkan tanggal keberangkatan (tanggal bulan tahun): "))
 
+# Parse string input date user into datetime object
 date_object = datetime.strptime(dateOfDeparture, "%d %B %Y")
 
 isWeekend = bool
@@ -3197,6 +3198,7 @@ def selectingPrice():
                     )
 
 
+# Check if bookhotel and lastly print receipt
 if bookHotel == 1:
     print("\n")  # Adding space
     showHotelPrice()
