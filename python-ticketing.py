@@ -1,11 +1,11 @@
 import locale
-from datetime import datetime
+from datetime import datetime, timedelta
 from prettytable import PrettyTable
 
 # * set locale for currency format number
 locale.setlocale(locale.LC_ALL, "id_ID")
 
-# List kota
+# List city
 city_list = ["Jakarta", "Malang", "Bandung", "Yogyakarta", "Surabaya"]
 
 # Pricelist ticket Jakarta
@@ -240,6 +240,9 @@ hotel_pricelist = {
 # Header table city
 header_table_city = ["No", "Daftar Kota Keberangkatan/Tujuan"]
 
+# Header table time
+header_table_time = ["No", "Waktu Keberangkatan"]
+
 # Header table hotel
 header_table_hotel = ["Kota", "Weekday/malam", "Weekend/malam"]
 
@@ -285,9 +288,10 @@ for sby_route in sby_ticket_pricelist.keys():
 
 # Create a PrettyTable instance
 table_list_city = PrettyTable(header_table_city)  # City table
+table_departure_time = PrettyTable(header_table_time)  # Time table
 
 table_receipt = PrettyTable(header_table_receipt)  # Receipt table
-table_receipt.title = "Receipt"  # Table receipt title
+table_receipt.title = "🐍 Receipt Python Travel 🐍"  # Table receipt title
 
 # Pricelist of hotel in each city
 table_list_hotel_jkt = PrettyTable(header_table_hotel)
@@ -328,6 +332,7 @@ pricelist_sby4 = PrettyTable(header_table_route)
 
 # Set the alignment of columns
 table_list_city.align = "c"  # City table
+table_departure_time.align = "c"  # Time table
 table_receipt.align = "l"  # Receipt table
 
 # Alignment of hotel columns
@@ -364,12 +369,15 @@ pricelist_sby1.align = (
 
 # * Adding rows table city list
 table_list_city.add_rows(
+    [[str(index), city] for index, city in enumerate(city_list, start=1)]
+)
+
+# * Adding rows table departure time
+table_departure_time.add_rows(
     [
-        ["1", "Jakarta"],
-        ["2", "Malang"],
-        ["3", "Bandung"],
-        ["4", "Yogyakarta"],
-        ["5", "Surabaya"],
+        ["1", "08:00"],
+        ["2", "16:00"],
+        ["3", "20:00"],
     ]
 )
 
@@ -478,17 +486,22 @@ def table_list_route(pricelist_city_table, city_routes, pricelist_city_routes, r
     print(pricelist_city_table)
 
 
-# * Select table pricelist by input user
+# * Select table pricelist & set estimated time by input user
 def selectPriceList():
+    global estimatedTime
     if departure_route == 1:
         if destination_route == 2:  # Jakarta - Malang
             table_list_route(pricelist_jkt1, jkt_routes, jkt_ticket_pricelist, 0)
+            estimatedTime = 12
         elif destination_route == 3:  # Jakarta - Bandung
             table_list_route(pricelist_jkt2, jkt_routes, jkt_ticket_pricelist, 1)
+            estimatedTime = 3
         elif destination_route == 4:  # Jakarta - Yogyakarta
             table_list_route(pricelist_jkt3, jkt_routes, jkt_ticket_pricelist, 2)
+            estimatedTime = 8
         elif destination_route == 5:  # Jakarta - Surabaya
             table_list_route(pricelist_jkt4, jkt_routes, jkt_ticket_pricelist, 3)
+            estimatedTime = 10
         else:
             print(
                 "Mohon masukkan input kota tujuan yang berbeda dengan kota keberangkatan!"
@@ -496,12 +509,16 @@ def selectPriceList():
     elif departure_route == 2:
         if destination_route == 1:  # Malang - Jakarta
             table_list_route(pricelist_mlg1, mlg_routes, mlg_ticket_pricelist, 0)
+            estimatedTime = 12
         elif destination_route == 3:  # Malang - Bandung
             table_list_route(pricelist_mlg2, mlg_routes, mlg_ticket_pricelist, 1)
+            estimatedTime = 15
         elif destination_route == 4:  # Malang - Yogyakarta
             table_list_route(pricelist_mlg3, mlg_routes, mlg_ticket_pricelist, 2)
+            estimatedTime = 7
         elif destination_route == 5:  # Malang - Surabaya
             table_list_route(pricelist_mlg2, mlg_routes, mlg_ticket_pricelist, 3)
+            estimatedTime = 3
         else:
             print(
                 "Mohon masukkan input kota tujuan yang berbeda dengan kota keberangkatan!"
@@ -509,12 +526,16 @@ def selectPriceList():
     elif departure_route == 3:
         if destination_route == 1:  # Bandung - Jakarta
             table_list_route(pricelist_bdg1, bdg_routes, bdg_ticket_pricelist, 0)
+            estimatedTime = 3
         elif destination_route == 2:  # Bandung - Malang
             table_list_route(pricelist_bdg2, bdg_routes, bdg_ticket_pricelist, 1)
+            estimatedTime = 15
         elif destination_route == 4:  # Bandung - Yogyakarta
             table_list_route(pricelist_bdg3, bdg_routes, bdg_ticket_pricelist, 2)
+            estimatedTime = 9
         elif destination_route == 5:  # Bandung - Surabaya
             table_list_route(pricelist_bdg4, bdg_routes, bdg_ticket_pricelist, 3)
+            estimatedTime = 13
         else:
             print(
                 "Mohon masukkan input kota tujuan yang berbeda dengan kota keberangkatan!"
@@ -522,12 +543,16 @@ def selectPriceList():
     elif departure_route == 4:
         if destination_route == 1:  # Yogyakarta - Jakarta
             table_list_route(pricelist_ygy1, ygy_routes, ygy_ticket_pricelist, 0)
+            estimatedTime = 8
         elif destination_route == 2:  # Yogyakarta - Malang
             table_list_route(pricelist_ygy2, ygy_routes, ygy_ticket_pricelist, 1)
+            estimatedTime = 7
         elif destination_route == 3:  # Yogyakarta - Bandung
             table_list_route(pricelist_ygy3, ygy_routes, ygy_ticket_pricelist, 2)
+            estimatedTime = 9
         elif destination_route == 5:  # Yogyakarta - Surabaya
             table_list_route(pricelist_ygy4, ygy_routes, ygy_ticket_pricelist, 3)
+            estimatedTime = 4
         else:
             print(
                 "Mohon masukkan input kota tujuan yang berbeda dengan kota keberangkatan!"
@@ -535,40 +560,109 @@ def selectPriceList():
     elif departure_route == 5:
         if destination_route == 1:  # Surabaya - Jakarta
             table_list_route(pricelist_sby1, sby_routes, sby_ticket_pricelist, 0)
+            estimatedTime = 10
         elif destination_route == 2:  # Surabaya - Malang
             table_list_route(pricelist_sby2, sby_routes, sby_ticket_pricelist, 1)
+            estimatedTime = 3
         elif destination_route == 3:  # Surabaya - Bandung
             table_list_route(pricelist_sby3, sby_routes, sby_ticket_pricelist, 2)
+            estimatedTime = 13
         elif destination_route == 4:  # Surabaya - Yogyakarta
             table_list_route(pricelist_sby4, sby_routes, sby_ticket_pricelist, 3)
+            estimatedTime = 4
         else:
             print(
                 "Mohon masukkan input kota tujuan yang berbeda dengan kota keberangkatan!"
             )
 
 
-# * Show hotel price at selected city destination
+# * Show hotel price at selected city destination and set weekday/weekend hotel price
 def showHotelPrice():
+    global weekdayHotelPrice
+    global weekendHotelPrice
+
     if destination_route == 1:
         table_list_hotel(table_list_hotel_jkt, 0)
-        # print(table_list_hotel_jkt)
+        weekdayHotelPrice = hotel_pricelist[city_list[0]][days[0]]
+        weekendHotelPrice = hotel_pricelist[city_list[0]][days[1]]
     elif destination_route == 2:
         table_list_hotel(table_list_hotel_mlg, 1)
-        # print(table_list_hotel_mlg)
+        weekdayHotelPrice = hotel_pricelist[city_list[1]][days[0]]
+        weekendHotelPrice = hotel_pricelist[city_list[1]][days[1]]
     elif destination_route == 3:
         table_list_hotel(table_list_hotel_bdg, 2)
-        # print(table_list_hotel_bdg)
+        weekdayHotelPrice = hotel_pricelist[city_list[2]][days[0]]
+        weekendHotelPrice = hotel_pricelist[city_list[2]][days[1]]
     elif destination_route == 4:
         table_list_hotel(table_list_hotel_ygy, 3)
-        # print(table_list_hotel_ygy)
+        weekdayHotelPrice = hotel_pricelist[city_list[3]][days[0]]
+        weekendHotelPrice = hotel_pricelist[city_list[3]][days[1]]
     elif destination_route == 5:
         table_list_hotel(table_list_hotel_sby, 4)
-        # print(table_list_hotel_sby)
+        weekdayHotelPrice = hotel_pricelist[city_list[4]][days[0]]
+        weekendHotelPrice = hotel_pricelist[city_list[4]][days[1]]
+
+
+# * Calculate arrival time
+def calculateArrivalTime(datetime_object, add_hours):
+    future_datetime_transportation = datetime_object + timedelta(hours=add_hours)
+
+    # Format the future date and time as a string
+    formatted_future_datetime_transportation = future_datetime_transportation.strftime(
+        "%d %B %Y %H:%M"
+    )
+
+    return formatted_future_datetime_transportation
+
+
+# * Calculate check-in & check-out hotel
+def calculateCheckInOutTime(datetime_object, add_days):
+    global calculatedCheckInTime
+    global calculatedCheckOutTime
+
+    datetime_checkin_hotel = datetime_object + timedelta(
+        hours=2
+    )  # add 2 hours after arrival time for check-in
+    datetime_checkout_hotel = (
+        datetime_object + timedelta(hours=2) + timedelta(days=add_days)
+    )
+
+    # Format the future date and time as a string
+    formatted_checkin_datetime_hotel = datetime_checkin_hotel.strftime("%d %B %Y %H:%M")
+    formatted_checkout_datetime_hotel = datetime_checkout_hotel.strftime(
+        "%d %B %Y %H:%M"
+    )
+
+    calculatedCheckInTime = formatted_checkin_datetime_hotel
+    calculatedCheckOutTime = formatted_checkout_datetime_hotel
+
+
+# * Count bill for hotel (weekday/weekend)
+def calculate_hotel_bill(start_date, num_days, roomHotel, weekday, weekend):
+    weekday_rate = weekday
+    weekend_rate = weekend
+    total_bill = 0
+
+    current_date = start_date
+    for _ in range(num_days):
+        # Check if the current day is a weekday (Monday=0, Sunday=6)
+        if current_date.weekday() < 5:
+            total_bill += weekday_rate
+        else:
+            total_bill += weekend_rate
+
+        # Move to the next day
+        current_date += timedelta(days=1)
+
+    return total_bill * roomHotel
 
 
 # * Start interact with user
-# Show list city
-print(table_list_city)
+print("\n")  # Adding space
+print("Selamat datang di 🐍 Python Travel 🐍") # Intro
+print("\n")  # Adding space
+
+print(table_list_city) # Show list city
 
 # Input departure route
 departure_route = int(input("Masukkan nomor kota keberangkatan: "))
@@ -577,6 +671,9 @@ departure_city = str
 # Input destination route
 destination_route = int(input("Masukkan nomor kota tujuan: "))
 destination_city = str
+
+# set estimated route time
+estimatedTime = int
 
 # * Check departure city
 if departure_route == 1:
@@ -603,7 +700,7 @@ elif destination_route == 5:
     destination_city = "Surabaya"
 
 print("\n")  # Adding space
-selectPriceList()  # * Show pricelist of selected route
+selectPriceList()  # * Show pricelist of selected route & set estimate time
 
 dateOfDeparture = str(input("Masukkan tanggal keberangkatan (tanggal bulan tahun): "))
 
@@ -622,30 +719,73 @@ else:
 
 print("\n")  # Adding space
 selectTransportType = int(
-    input("Tiket transportasi apa yang Anda pesan? (1. Kereta | 2. Pesawat): ")
+    input("Tiket transportasi apa yang Anda pesan?\n(1. Kereta | 2. Pesawat): ")
 )
 
 selectClassType = int(
-    input("Tiket kelas apa yang Anda pesan? (1. Economy | 2. First): ")
+    input("Tiket kelas apa yang Anda pesan?\n(1. Economy | 2. First): ")
 )
 
 countTicket = int(input("Berapa banyak tiket yang Anda pesan? "))
 
+# * Print time table and let user decide
+print("\n")  # Adding space
+print(table_departure_time)
+selectTime = int(input("Masukkan nomor waktu keberangkatan Anda: "))
+selectedTime = str
+
+# * Check selected time
+if selectTime == 1:
+    selectedTime = "08:00"
+elif selectTime == 2:
+    selectedTime = "16:00"
+elif selectTime == 3:
+    selectedTime = "20:00"
+
+# * Combine departure date and time
+combinedDepartureDateTime = f"{dateOfDeparture} {selectedTime}"
+
+# * Parse the combined string for departure datetime into a datetime object
+combined_departure_datetime_object = datetime.strptime(
+    combinedDepartureDateTime, "%d %B %Y %H:%M"
+)
+
+# * Calculated future datetime
+calculatedArrivalTime = calculateArrivalTime(
+    combined_departure_datetime_object, estimatedTime
+)
+
+print("\n")  # Adding space
+
 bookHotel = int(
-    input("Apakah Anda ingin memesan hotel di tempat tujuan? (1. Ya | 2. Tidak): ")
+    input(
+        "Apakah Anda ingin memesan hotel di tempat tujuan?\nWaktu check-in 2 jam setelah tiba.\n(1. Ya | 2. Tidak): "
+    )
 )
 
 roomHotel = int
+daysHotel = int
+calculatedCheckInTime = str
+calculatedCheckOutTime = str
+
+weekdayHotelPrice = int
+weekendHotelPrice = int
+billHotel = int
+
+# * Parse the combined string for arrival datetime into a datetime object
+combined_arrival_datetime_object = datetime.strptime(
+    calculatedArrivalTime, "%d %B %Y %H:%M"
+)
 
 
 # * Adding rows table receipt
-def printReceipt(transport_price, hotel_price):
-    priceTotal = (transport_price * countTicket) + (
-        hotel_price * roomHotel if bookHotel == 1 else 0
-    )
+def printReceipt(transport_price):
+    priceTotal = (transport_price * countTicket) + (billHotel if bookHotel == 1 else 0)
+
     table_receipt.add_row(["Kota keberangkatan:", departure_city])
     table_receipt.add_row(["Kota tujuan:", destination_city])
-    table_receipt.add_row(["Tanggal keberangkatan:", dateOfDeparture])
+    table_receipt.add_row(["Tanggal & Waktu keberangkatan:", combinedDepartureDateTime])
+    table_receipt.add_row(["Estimasi Waktu Tiba:", calculatedArrivalTime])
     table_receipt.add_row(
         ["Jenis tiket:", "Weekend" if isWeekend == True else "Weekday"]
     )
@@ -655,10 +795,18 @@ def printReceipt(transport_price, hotel_price):
     table_receipt.add_row(
         ["Kelas tiket:", "Ekonomi" if selectClassType == 1 else "First"]
     )
-    table_receipt.add_row(["Banyak tiket:", countTicket])
+    table_receipt.add_row(["Banyak tiket:", countTicket], divider=True)
+
     table_receipt.add_row(["Booking hotel:", "Ya" if bookHotel == 1 else "Tidak"])
     table_receipt.add_row(
-        ["Banyak kamar:", roomHotel if bookHotel == 1 else 0], divider=True
+        ["Waktu Check In:", calculatedCheckInTime if bookHotel == 1 else "-"]
+    )
+    table_receipt.add_row(
+        ["Waktu Check Out:", calculatedCheckOutTime if bookHotel == 1 else "-"]
+    )
+    table_receipt.add_row(["Banyak kamar:", roomHotel if bookHotel == 1 else 0])
+    table_receipt.add_row(
+        ["Lama menginap (malam):", daysHotel if bookHotel == 1 else 0], divider=True
     )
 
     # Price section
@@ -679,7 +827,7 @@ def printReceipt(transport_price, hotel_price):
             "Rp"
             + locale.format_string(
                 "%d",
-                hotel_price * roomHotel if bookHotel == 1 else 0,
+                billHotel if bookHotel == 1 else 0,
                 grouping=True,
             ),
         ],
@@ -710,30 +858,26 @@ def selectingPrice():
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[0]][transport[0]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[1]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[0]][transport[0]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[1]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[0]][transport[0]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[1]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[0]][transport[0]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[1]][days[1]],
+                        ]
                     )
         elif selectTransportType == 2:
             if selectClassType == 1:
@@ -741,30 +885,26 @@ def selectingPrice():
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[0]][transport[1]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[1]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[0]][transport[1]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[1]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[0]][transport[1]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[1]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[0]][transport[1]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[1]][days[1]],
+                        ]
                     )
     elif departure_route == 1 and destination_route == 3:  # Jakarta - Bandung
         if selectTransportType == 1:
@@ -773,30 +913,26 @@ def selectingPrice():
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[1]][transport[0]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[2]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[1]][transport[0]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[2]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[1]][transport[0]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[2]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[1]][transport[0]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[2]][days[1]],
+                        ]
                     )
         elif selectTransportType == 2:
             if selectClassType == 1:
@@ -804,30 +940,26 @@ def selectingPrice():
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[1]][transport[1]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[2]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[1]][transport[1]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[2]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[1]][transport[1]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[2]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[1]][transport[1]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[2]][days[1]],
+                        ]
                     )
     elif departure_route == 1 and destination_route == 4:  # Jakarta - Yogyakarta
         if selectTransportType == 1:
@@ -836,30 +968,26 @@ def selectingPrice():
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[2]][transport[0]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[3]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[2]][transport[0]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[3]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[2]][transport[0]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[3]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[2]][transport[0]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[3]][days[1]],
+                        ]
                     )
         elif selectTransportType == 2:
             if selectClassType == 1:
@@ -867,30 +995,26 @@ def selectingPrice():
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[2]][transport[1]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[3]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[2]][transport[1]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[3]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[2]][transport[1]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[3]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[2]][transport[1]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[3]][days[1]],
+                        ]
                     )
     elif departure_route == 1 and destination_route == 5:  # Jakarta - Surabaya
         if selectTransportType == 1:
@@ -899,30 +1023,26 @@ def selectingPrice():
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[3]][transport[0]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[4]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[3]][transport[0]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[4]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[3]][transport[0]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[4]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[3]][transport[0]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[4]][days[1]],
+                        ]
                     )
         elif selectTransportType == 2:
             if selectClassType == 1:
@@ -930,30 +1050,26 @@ def selectingPrice():
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[3]][transport[1]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[4]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[3]][transport[1]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[4]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[3]][transport[1]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[4]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         jkt_ticket_pricelist[jkt_routes[3]][transport[1]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[4]][days[1]],
+                        ]
                     )
     # * Selecting price for Malang route
     elif departure_route == 2 and destination_route == 1:  # Malang - Jakarta
@@ -963,30 +1079,26 @@ def selectingPrice():
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[0]][transport[0]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[0]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[0]][transport[0]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[0]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[0]][transport[0]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[0]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[0]][transport[0]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[0]][days[1]],
+                        ]
                     )
         elif selectTransportType == 2:
             if selectClassType == 1:
@@ -994,30 +1106,26 @@ def selectingPrice():
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[0]][transport[1]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[0]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[0]][transport[1]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[0]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[0]][transport[1]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[0]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[0]][transport[1]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[0]][days[1]],
+                        ]
                     )
     elif departure_route == 2 and destination_route == 3:  # Malang - Bandung
         if selectTransportType == 1:
@@ -1026,30 +1134,26 @@ def selectingPrice():
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[1]][transport[0]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[2]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[1]][transport[0]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[2]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[1]][transport[0]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[2]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[1]][transport[0]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[2]][days[1]],
+                        ]
                     )
         elif selectTransportType == 2:
             if selectClassType == 1:
@@ -1057,30 +1161,26 @@ def selectingPrice():
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[1]][transport[1]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[2]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[1]][transport[1]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[2]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[1]][transport[1]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[2]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[1]][transport[1]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[2]][days[1]],
+                        ]
                     )
     elif departure_route == 2 and destination_route == 4:  # Malang  Yogyakarta
         if selectTransportType == 1:
@@ -1089,30 +1189,26 @@ def selectingPrice():
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[2]][transport[0]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[3]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[2]][transport[0]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[3]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[2]][transport[0]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[3]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[2]][transport[0]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[3]][days[1]],
+                        ]
                     )
         elif selectTransportType == 2:
             if selectClassType == 1:
@@ -1120,30 +1216,26 @@ def selectingPrice():
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[2]][transport[1]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[3]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[2]][transport[1]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[3]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[2]][transport[1]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[3]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[2]][transport[1]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[3]][days[1]],
+                        ]
                     )
     elif departure_route == 2 and destination_route == 5:  # Malang - Surabaya
         if selectTransportType == 1:
@@ -1152,30 +1244,26 @@ def selectingPrice():
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[3]][transport[0]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[4]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[3]][transport[0]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[4]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[3]][transport[0]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[4]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[3]][transport[0]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[4]][days[1]],
+                        ]
                     )
         elif selectTransportType == 2:
             if selectClassType == 1:
@@ -1183,30 +1271,26 @@ def selectingPrice():
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[3]][transport[1]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[4]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[3]][transport[1]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[4]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[3]][transport[1]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[4]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         mlg_ticket_pricelist[mlg_routes[3]][transport[1]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[4]][days[1]],
+                        ]
                     )
     # * Selecting price for Bandung route
     elif departure_route == 3 and destination_route == 1:  # Bandung - Jakarta
@@ -1216,30 +1300,26 @@ def selectingPrice():
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[0]][transport[0]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[0]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[0]][transport[0]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[0]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[0]][transport[0]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[0]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[0]][transport[0]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[0]][days[1]],
+                        ]
                     )
         elif selectTransportType == 2:
             if selectClassType == 1:
@@ -1247,30 +1327,26 @@ def selectingPrice():
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[0]][transport[1]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[0]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[0]][transport[1]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[0]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[0]][transport[1]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[0]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[0]][transport[1]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[0]][days[1]],
+                        ]
                     )
     elif departure_route == 3 and destination_route == 2:  # Bandung - Malang
         if selectTransportType == 1:
@@ -1279,30 +1355,26 @@ def selectingPrice():
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[1]][transport[0]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[1]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[1]][transport[0]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[1]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[1]][transport[0]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[1]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[1]][transport[0]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[1]][days[1]],
+                        ]
                     )
         elif selectTransportType == 2:
             if selectClassType == 1:
@@ -1310,30 +1382,26 @@ def selectingPrice():
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[1]][transport[1]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[1]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[1]][transport[1]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[1]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[1]][transport[1]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[1]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[1]][transport[1]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[1]][days[1]],
+                        ]
                     )
     elif departure_route == 3 and destination_route == 4:  # Bandung - Yogyakarta
         if selectTransportType == 1:
@@ -1342,30 +1410,26 @@ def selectingPrice():
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[2]][transport[0]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[4]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[2]][transport[0]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[4]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[2]][transport[0]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[4]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[2]][transport[0]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[4]][days[1]],
+                        ]
                     )
         elif selectTransportType == 2:
             if selectClassType == 1:
@@ -1373,30 +1437,26 @@ def selectingPrice():
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[2]][transport[1]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[4]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[2]][transport[1]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[4]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[2]][transport[1]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[4]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[2]][transport[1]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[4]][days[1]],
+                        ]
                     )
     elif departure_route == 3 and destination_route == 5:  # Bandung - Surabaya
         if selectTransportType == 1:
@@ -1405,30 +1465,26 @@ def selectingPrice():
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[3]][transport[0]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[4]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[3]][transport[0]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[4]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[3]][transport[0]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[4]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[3]][transport[0]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[4]][days[1]],
+                        ]
                     )
         elif selectTransportType == 2:
             if selectClassType == 1:
@@ -1436,30 +1492,26 @@ def selectingPrice():
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[3]][transport[1]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[4]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[3]][transport[1]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[4]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[3]][transport[1]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[4]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         bdg_ticket_pricelist[bdg_routes[3]][transport[1]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[4]][days[1]],
+                        ]
                     )
     # * Selecting price for Yogyakarta route
     elif departure_route == 4 and destination_route == 1:  # Yogyakarta - Jakarta
@@ -1469,30 +1521,26 @@ def selectingPrice():
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[0]][transport[0]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[0]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[0]][transport[0]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[0]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[0]][transport[0]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[0]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[0]][transport[0]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[0]][days[1]],
+                        ]
                     )
         elif selectTransportType == 2:
             if selectClassType == 1:
@@ -1500,30 +1548,26 @@ def selectingPrice():
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[0]][transport[1]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[0]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[0]][transport[1]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[0]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[0]][transport[1]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[0]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[0]][transport[1]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[0]][days[1]],
+                        ]
                     )
     elif departure_route == 4 and destination_route == 2:  # Yogyakarta - Malang
         if selectTransportType == 1:
@@ -1532,30 +1576,26 @@ def selectingPrice():
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[1]][transport[0]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[1]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[1]][transport[0]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[1]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[1]][transport[0]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[1]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[1]][transport[0]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[1]][days[1]],
+                        ]
                     )
         elif selectTransportType == 2:
             if selectClassType == 1:
@@ -1563,30 +1603,26 @@ def selectingPrice():
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[1]][transport[1]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[1]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[1]][transport[1]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[1]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[1]][transport[1]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[1]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[1]][transport[1]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[1]][days[1]],
+                        ]
                     )
     elif departure_route == 4 and destination_route == 3:  # Yogyakarta - Bandung
         if selectTransportType == 1:
@@ -1595,30 +1631,26 @@ def selectingPrice():
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[2]][transport[0]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[2]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[2]][transport[0]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[2]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[2]][transport[0]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[2]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[2]][transport[0]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[2]][days[1]],
+                        ]
                     )
         elif selectTransportType == 2:
             if selectClassType == 1:
@@ -1626,30 +1658,26 @@ def selectingPrice():
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[2]][transport[1]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[2]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[2]][transport[1]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[2]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[2]][transport[1]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[2]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[2]][transport[1]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[2]][days[1]],
+                        ]
                     )
     elif departure_route == 4 and destination_route == 5:  # Yogyakarta - Surabaya
         if selectTransportType == 1:
@@ -1658,30 +1686,26 @@ def selectingPrice():
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[3]][transport[0]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[4]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[3]][transport[0]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[4]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[3]][transport[0]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[4]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[3]][transport[0]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[4]][days[1]],
+                        ]
                     )
         elif selectTransportType == 2:
             if selectClassType == 1:
@@ -1689,30 +1713,26 @@ def selectingPrice():
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[3]][transport[1]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[4]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[3]][transport[1]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[4]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[3]][transport[1]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[4]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         ygy_ticket_pricelist[ygy_routes[3]][transport[1]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[4]][days[1]],
+                        ]
                     )
     # * Selecting price for Surabaya route
     elif departure_route == 5 and destination_route == 1:  # Surabaya - Jakarta
@@ -1722,30 +1742,26 @@ def selectingPrice():
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[0]][transport[0]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[0]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[0]][transport[0]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[0]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[0]][transport[0]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[0]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[0]][transport[0]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[0]][days[1]],
+                        ]
                     )
         elif selectTransportType == 2:
             if selectClassType == 1:
@@ -1753,30 +1769,26 @@ def selectingPrice():
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[0]][transport[1]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[0]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[0]][transport[1]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[0]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[0]][transport[1]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[0]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[0]][transport[1]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[0]][days[1]],
+                        ]
                     )
     elif departure_route == 5 and destination_route == 2:  # Surabaya - Malang
         if selectTransportType == 1:
@@ -1785,30 +1797,26 @@ def selectingPrice():
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[1]][transport[0]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[1]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[1]][transport[0]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[1]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[1]][transport[0]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[1]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[1]][transport[0]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[1]][days[1]],
+                        ]
                     )
         elif selectTransportType == 2:
             if selectClassType == 1:
@@ -1816,30 +1824,26 @@ def selectingPrice():
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[1]][transport[1]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[1]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[1]][transport[1]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[1]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[1]][transport[1]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[1]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[1]][transport[1]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[1]][days[1]],
+                        ]
                     )
     elif departure_route == 5 and destination_route == 3:  # Surabaya - Bandung
         if selectTransportType == 1:
@@ -1848,30 +1852,26 @@ def selectingPrice():
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[2]][transport[0]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[2][days[0]]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[2]][transport[0]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[2]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[2]][transport[0]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[2]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[2]][transport[0]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[2]][days[1]],
+                        ]
                     )
         elif selectTransportType == 2:
             if selectClassType == 1:
@@ -1879,30 +1879,26 @@ def selectingPrice():
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[2]][transport[1]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[2]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[2]][transport[1]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[2]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[2]][transport[1]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[2]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[2]][transport[1]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[2]][days[1]],
+                        ]
                     )
     elif departure_route == 5 and destination_route == 4:  # Surabaya - Yogyakarta
         if selectTransportType == 1:
@@ -1911,30 +1907,26 @@ def selectingPrice():
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[3]][transport[0]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[3]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[3]][transport[0]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[3]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[3]][transport[0]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[3]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[3]][transport[0]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[3]][days[1]],
+                        ]
                     )
         elif selectTransportType == 2:
             if selectClassType == 1:
@@ -1942,30 +1934,26 @@ def selectingPrice():
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[3]][transport[1]][classes[0]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[3]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[3]][transport[1]][classes[0]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[3]][days[1]],
+                        ]
                     )
             elif selectClassType == 2:
                 if isWeekend == False:
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[3]][transport[1]][classes[1]][
                             days[0]
-                        ],
-                        hotel_pricelist[city_list[3]][days[0]],
+                        ]
                     )
                 elif isWeekend == True:
                     printReceipt(
                         sby_ticket_pricelist[sby_routes[3]][transport[1]][classes[1]][
                             days[1]
-                        ],
-                        hotel_pricelist[city_list[3]][days[1]],
+                        ]
                     )
 
 
@@ -1974,10 +1962,24 @@ if bookHotel == 1:
     print("\n")  # Adding space
     showHotelPrice()
     roomHotel = int(input("Berapa banyak kamar yang Anda pesan? "))
+    daysHotel = int(input("Berapa lama Anda menginap? (malam): "))
+    calculateCheckInOutTime(combined_arrival_datetime_object, daysHotel)
+    billHotel = calculate_hotel_bill(
+        combined_arrival_datetime_object,
+        daysHotel,
+        roomHotel,
+        weekdayHotelPrice,
+        weekendHotelPrice,
+    )
+
     print("\n")  # Adding space
     selectingPrice()
+    print("\n")  # Adding space
     print("Silahkan lakukan pembayaran dalam 1x24 jam")
+    print("\n")  # Adding space
 else:
     print("\n")  # Adding space
     selectingPrice()
+    print("\n")  # Adding space
     print("Silahkan lakukan pembayaran dalam 1x24 jam")
+    print("\n")  # Adding space
